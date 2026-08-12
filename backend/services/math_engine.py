@@ -180,6 +180,20 @@ def calculate_swing_factor(input_data: dict, config_data: dict) -> tuple[float, 
     - Normal Times: uses partial swing trigger if outflow exceeds threshold.
     Returns (swing_factor_pct, trigger_reason).
     """
+    transaction_type = input_data.get("transaction_type", "redemption")
+    amount_inr = input_data.get("amount_inr", 0.0)
+    scheme_category = input_data.get("scheme_category", "credit_risk")
+
+    # Statutory exemptions
+    if transaction_type == "subscription":
+        return 0.0, "Subscriptions are not subject to swing pricing adjustments."
+
+    if amount_inr > 0 and amount_inr <= 200_000.0:
+        return 0.0, "Retail transaction <= INR 2 Lakh is statutorily exempt from swing pricing."
+
+    if scheme_category in ["liquid", "overnight", "gilt", "gilt-10yr"]:
+        return 0.0, f"Scheme category '{scheme_category}' is statutorily exempt from swing pricing framework."
+
     market_dislocation_active = config_data.get("market_dislocation_active", False)
     risk_o_meter = input_data.get("risk_o_meter", "LOW")
     prc_cell = input_data.get("prc_cell", "")
@@ -189,9 +203,16 @@ def calculate_swing_factor(input_data: dict, config_data: dict) -> tuple[float, 
     prc_matrix = config_data.get("prc_matrix_swing_factors", {})
     partial_swing_threshold_pct = config_data.get("partial_swing_threshold_pct", 5.0)
 
-    if market_dislocation_active and risk_o_meter in ["HIGH", "VERY_HIGH"]:
+    # Clean PRC key for lookup (support both B-III and B_III)
+    prc_key = prc_cell.replace("-", "_") if prc_cell else ""
+    
+    # High risk cells defined by SEBI: A-III, B-II, B-III, C-I, C-II, C-III
+    high_risk_cells = ["A_III", "A-III", "B_II", "B-II", "B_III", "B-III", "C_I", "C-I", "C_II", "C-II", "C_III", "C-III"]
+    is_high_risk = (risk_o_meter in ["HIGH", "VERY_HIGH"]) or (prc_cell in high_risk_cells)
+
+    if market_dislocation_active and is_high_risk:
         # Mandatory full swing
-        swing_factor = prc_matrix.get(prc_cell, 1.00)
+        swing_factor = prc_matrix.get(prc_key, prc_matrix.get(prc_cell, 1.00))
         return (
             float(swing_factor),
             f"SEBI mandated full swing pricing triggered due to market dislocation for cell {prc_cell} ({risk_o_meter} risk scheme).",

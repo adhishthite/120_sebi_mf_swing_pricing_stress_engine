@@ -1,80 +1,382 @@
 {
-  "scenarios": [
+  "schemes": [
     {
-      "name": "high_risk_dislocation_stressed",
-      "description": "High-risk scheme (PRC Cell C-III, Risk-o-meter VERY_HIGH) under declared SEBI market dislocation. Mandates 2.0% minimum swing pricing.",
-      "payload": {
-        "aum": 5000000000.0,
-        "initial_nav": 15.75,
-        "net_outflow_pct": 12.5,
-        "risk_o_meter": "VERY_HIGH",
-        "prc_cell": "C-III",
-        "portfolio_exposure": {
-          "liquid_ratio": 0.30,
-          "semi_liquid_ratio": 0.40,
-          "illiquid_ratio": 0.30
-        },
-        "investor_name": "***MASKED_INVESTOR_AM***",
-        "investor_pan": "XXXXX1234F",
-        "investor_aadhaar": "XXXX-XXXX-9012"
-      }
+      "name": "Credit Risk Fund",
+      "code": "credit_risk",
+      "prc": "B-III",
+      "aum_cr": 2500
     },
     {
-      "name": "normal_partial_swing",
-      "description": "Normal market conditions but heavy redemptions (8.0% outflow, exceeding 5.0% threshold) triggering a partial swing pricing mechanism.",
-      "payload": {
-        "aum": 2500000000.0,
-        "initial_nav": 24.50,
-        "net_outflow_pct": 8.0,
-        "risk_o_meter": "HIGH",
-        "prc_cell": "B-II",
-        "portfolio_exposure": {
-          "liquid_ratio": 0.50,
-          "semi_liquid_ratio": 0.30,
-          "illiquid_ratio": 0.20
-        },
-        "investor_name": "MASKED_USER",
-        "investor_pan": "XXXXX9876Q",
-        "investor_aadhaar": "XXXXXXXX4321"
-      }
+      "name": "Medium Duration Fund",
+      "code": "medium_duration",
+      "prc": "B-II",
+      "aum_cr": 4200
     },
     {
-      "name": "unmasked_pii_violation",
-      "description": "A transaction payload leaked with raw PAN and Aadhaar details to test redactor and compliance policies.",
-      "payload": {
-        "aum": 1200000000.0,
-        "initial_nav": 10.00,
-        "net_outflow_pct": 2.5,
-        "risk_o_meter": "LOW",
-        "prc_cell": "A-I",
-        "portfolio_exposure": {
-          "liquid_ratio": 0.70,
-          "semi_liquid_ratio": 0.25,
-          "illiquid_ratio": 0.05
-        },
-        "investor_name": "Adhish Thite",
-        "investor_pan": "ABCDE1234F",
-        "investor_aadhaar": "123456789012"
-      }
+      "name": "Dynamic Bond Fund",
+      "code": "dynamic_bond",
+      "prc": "A-III",
+      "aum_cr": 6800
     },
     {
-      "name": "high_illiquidity_violation",
-      "description": "A portfolio where the illiquid assets represent 38.0% of the holdings (exceeding the SEBI compliance limit of 35%).",
-      "payload": {
-        "aum": 3000000000.0,
-        "initial_nav": 100.00,
-        "net_outflow_pct": 1.0,
-        "risk_o_meter": "LOW",
-        "prc_cell": "A-I",
-        "portfolio_exposure": {
-          "liquid_ratio": 0.30,
-          "semi_liquid_ratio": 0.32,
-          "illiquid_ratio": 0.38
-        },
-        "investor_name": "***MASKED_INVESTOR_JS***",
-        "investor_pan": "XXXXX3322D",
-        "investor_aadhaar": "XXXX-XXXX-1111"
-      }
+      "name": "Corporate Bond Fund",
+      "code": "corporate_bond",
+      "prc": "A-II",
+      "aum_cr": 12500
+    },
+    {
+      "name": "Banking & PSU Debt Fund",
+      "code": "banking_psu",
+      "prc": "A-I",
+      "aum_cr": 8900
+    },
+    {
+      "name": "Liquid Fund (Exempt)",
+      "code": "liquid",
+      "prc": "A-I",
+      "aum_cr": 18000
+    },
+    {
+      "name": "Overnight Fund (Exempt)",
+      "code": "overnight",
+      "prc": "A-I",
+      "aum_cr": 15000
+    }
+  ],
+  "investors": [
+    {
+      "investor_id": "INV-1000",
+      "investor_name": "Rohan Mehta",
+      "investor_pan": "ABCFV9671M",
+      "investor_aadhaar": "713435519144",
+      "is_retail": false,
+      "simulated_amount_inr": 16557927.87,
+      "transaction_type": "redemption",
+      "preferred_category": "medium_duration"
+    },
+    {
+      "investor_id": "INV-1001",
+      "investor_name": "Arjun Patel",
+      "investor_pan": "ABCHK3686G",
+      "investor_aadhaar": "990515413837",
+      "is_retail": true,
+      "simulated_amount_inr": 25474.7,
+      "transaction_type": "redemption",
+      "preferred_category": "corporate_bond"
+    },
+    {
+      "investor_id": "INV-1002",
+      "investor_name": "Diya Iyer",
+      "investor_pan": "ABCTZ3789A",
+      "investor_aadhaar": "156470515447",
+      "is_retail": true,
+      "simulated_amount_inr": 154201.81,
+      "transaction_type": "redemption",
+      "preferred_category": "credit_risk"
+    },
+    {
+      "investor_id": "INV-1003",
+      "investor_name": "Tanvi Gupta",
+      "investor_pan": "ABCPR3956P",
+      "investor_aadhaar": "903711418140",
+      "is_retail": true,
+      "simulated_amount_inr": 53418.44,
+      "transaction_type": "redemption",
+      "preferred_category": "corporate_bond"
+    },
+    {
+      "investor_id": "INV-1004",
+      "investor_name": "Rhea Choudhury",
+      "investor_pan": "ABCTE1175B",
+      "investor_aadhaar": "914502965018",
+      "is_retail": true,
+      "simulated_amount_inr": 61279.66,
+      "transaction_type": "subscription",
+      "preferred_category": "credit_risk"
+    },
+    {
+      "investor_id": "INV-1005",
+      "investor_name": "Ananya Varma",
+      "investor_pan": "ABCTL5286J",
+      "investor_aadhaar": "002940134491",
+      "is_retail": true,
+      "simulated_amount_inr": 190344.86,
+      "transaction_type": "redemption",
+      "preferred_category": "medium_duration"
+    },
+    {
+      "investor_id": "INV-1006",
+      "investor_name": "Vikram Das",
+      "investor_pan": "ABCAU2012S",
+      "investor_aadhaar": "730175600831",
+      "is_retail": false,
+      "simulated_amount_inr": 12383688.03,
+      "transaction_type": "redemption",
+      "preferred_category": "overnight"
+    },
+    {
+      "investor_id": "INV-1007",
+      "investor_name": "Aditi Trivedi",
+      "investor_pan": "ABCFQ8196B",
+      "investor_aadhaar": "269424478741",
+      "is_retail": true,
+      "simulated_amount_inr": 188549.39,
+      "transaction_type": "redemption",
+      "preferred_category": "banking_psu"
+    },
+    {
+      "investor_id": "INV-1008",
+      "investor_name": "Zoya Venkatesh",
+      "investor_pan": "ABCAW2152V",
+      "investor_aadhaar": "580851324251",
+      "is_retail": false,
+      "simulated_amount_inr": 9248402.93,
+      "transaction_type": "redemption",
+      "preferred_category": "dynamic_bond"
+    },
+    {
+      "investor_id": "INV-1009",
+      "investor_name": "Adhish Iyer",
+      "investor_pan": "ABCPE9340V",
+      "investor_aadhaar": "966090904588",
+      "is_retail": false,
+      "simulated_amount_inr": 8739573.46,
+      "transaction_type": "redemption",
+      "preferred_category": "overnight"
+    },
+    {
+      "investor_id": "INV-1010",
+      "investor_name": "Varun Gupta",
+      "investor_pan": "ABCFM7179P",
+      "investor_aadhaar": "064752768573",
+      "is_retail": true,
+      "simulated_amount_inr": 134239.42,
+      "transaction_type": "subscription",
+      "preferred_category": "banking_psu"
+    },
+    {
+      "investor_id": "INV-1011",
+      "investor_name": "Aditi Bose",
+      "investor_pan": "ABCTO6361W",
+      "investor_aadhaar": "833267008877",
+      "is_retail": false,
+      "simulated_amount_inr": 43947756.59,
+      "transaction_type": "redemption",
+      "preferred_category": "dynamic_bond"
+    },
+    {
+      "investor_id": "INV-1012",
+      "investor_name": "Dev Jain",
+      "investor_pan": "ABCHW3326O",
+      "investor_aadhaar": "612553451033",
+      "is_retail": true,
+      "simulated_amount_inr": 92887.26,
+      "transaction_type": "subscription",
+      "preferred_category": "overnight"
+    },
+    {
+      "investor_id": "INV-1013",
+      "investor_name": "Rahul Choudhury",
+      "investor_pan": "ABCPN6028A",
+      "investor_aadhaar": "297399618836",
+      "is_retail": true,
+      "simulated_amount_inr": 131534.31,
+      "transaction_type": "redemption",
+      "preferred_category": "medium_duration"
+    },
+    {
+      "investor_id": "INV-1014",
+      "investor_name": "Dev Singh",
+      "investor_pan": "ABCFJ2978C",
+      "investor_aadhaar": "538259730581",
+      "is_retail": true,
+      "simulated_amount_inr": 176687.98,
+      "transaction_type": "subscription",
+      "preferred_category": "liquid"
+    },
+    {
+      "investor_id": "INV-1015",
+      "investor_name": "Adhish Trivedi",
+      "investor_pan": "ABCPL9032K",
+      "investor_aadhaar": "655498180107",
+      "is_retail": false,
+      "simulated_amount_inr": 41827448.73,
+      "transaction_type": "redemption",
+      "preferred_category": "dynamic_bond"
+    },
+    {
+      "investor_id": "INV-1016",
+      "investor_name": "Rhea Nair",
+      "investor_pan": "ABCTF9363N",
+      "investor_aadhaar": "326774113031",
+      "is_retail": false,
+      "simulated_amount_inr": 17927629.1,
+      "transaction_type": "redemption",
+      "preferred_category": "liquid"
+    },
+    {
+      "investor_id": "INV-1017",
+      "investor_name": "Dev Nair",
+      "investor_pan": "ABCPF7121T",
+      "investor_aadhaar": "192883907093",
+      "is_retail": true,
+      "simulated_amount_inr": 166555.43,
+      "transaction_type": "redemption",
+      "preferred_category": "credit_risk"
+    },
+    {
+      "investor_id": "INV-1018",
+      "investor_name": "Rahul Agarwal",
+      "investor_pan": "ABCCG5531A",
+      "investor_aadhaar": "965181115340",
+      "is_retail": false,
+      "simulated_amount_inr": 20420498.16,
+      "transaction_type": "redemption",
+      "preferred_category": "overnight"
+    },
+    {
+      "investor_id": "INV-1019",
+      "investor_name": "Varun Thite",
+      "investor_pan": "ABCFR2640D",
+      "investor_aadhaar": "694888557224",
+      "is_retail": false,
+      "simulated_amount_inr": 35632900.22,
+      "transaction_type": "redemption",
+      "preferred_category": "banking_psu"
+    },
+    {
+      "investor_id": "INV-1020",
+      "investor_name": "Dev Nair",
+      "investor_pan": "ABCPM1325E",
+      "investor_aadhaar": "311601126721",
+      "is_retail": false,
+      "simulated_amount_inr": 17825719.51,
+      "transaction_type": "redemption",
+      "preferred_category": "corporate_bond"
+    },
+    {
+      "investor_id": "INV-1021",
+      "investor_name": "Neha Mehta",
+      "investor_pan": "ABCAG1956A",
+      "investor_aadhaar": "860986513982",
+      "is_retail": true,
+      "simulated_amount_inr": 133349.11,
+      "transaction_type": "redemption",
+      "preferred_category": "overnight"
+    },
+    {
+      "investor_id": "INV-1022",
+      "investor_name": "Neha Mehta",
+      "investor_pan": "ABCPX8328Z",
+      "investor_aadhaar": "733970533828",
+      "is_retail": true,
+      "simulated_amount_inr": 158267.03,
+      "transaction_type": "redemption",
+      "preferred_category": "corporate_bond"
+    },
+    {
+      "investor_id": "INV-1023",
+      "investor_name": "Varun Patel",
+      "investor_pan": "ABCTU6025S",
+      "investor_aadhaar": "822979076837",
+      "is_retail": false,
+      "simulated_amount_inr": 42349221.64,
+      "transaction_type": "redemption",
+      "preferred_category": "medium_duration"
+    },
+    {
+      "investor_id": "INV-1024",
+      "investor_name": "Ishaan Jain",
+      "investor_pan": "ABCPY7002X",
+      "investor_aadhaar": "239337460109",
+      "is_retail": false,
+      "simulated_amount_inr": 29504437.89,
+      "transaction_type": "redemption",
+      "preferred_category": "dynamic_bond"
+    },
+    {
+      "investor_id": "INV-1025",
+      "investor_name": "Aditi Nair",
+      "investor_pan": "ABCHE1545A",
+      "investor_aadhaar": "463372390316",
+      "is_retail": false,
+      "simulated_amount_inr": 5019200.44,
+      "transaction_type": "redemption",
+      "preferred_category": "medium_duration"
+    },
+    {
+      "investor_id": "INV-1026",
+      "investor_name": "Kunal Gupta",
+      "investor_pan": "ABCHF4514K",
+      "investor_aadhaar": "000993229823",
+      "is_retail": true,
+      "simulated_amount_inr": 98890.19,
+      "transaction_type": "redemption",
+      "preferred_category": "overnight"
+    },
+    {
+      "investor_id": "INV-1027",
+      "investor_name": "Aditi Thite",
+      "investor_pan": "ABCHX9926X",
+      "investor_aadhaar": "018076971467",
+      "is_retail": false,
+      "simulated_amount_inr": 23877028.99,
+      "transaction_type": "redemption",
+      "preferred_category": "corporate_bond"
+    },
+    {
+      "investor_id": "INV-1028",
+      "investor_name": "Tanvi Iyer",
+      "investor_pan": "ABCCA4078V",
+      "investor_aadhaar": "514249944974",
+      "is_retail": false,
+      "simulated_amount_inr": 19526676.23,
+      "transaction_type": "redemption",
+      "preferred_category": "medium_duration"
+    },
+    {
+      "investor_id": "INV-1029",
+      "investor_name": "Rhea Deshmukh",
+      "investor_pan": "ABCCG6289D",
+      "investor_aadhaar": "653891960545",
+      "is_retail": false,
+      "simulated_amount_inr": 18198996.5,
+      "transaction_type": "redemption",
+      "preferred_category": "overnight"
+    }
+  ],
+  "market_stress_scenarios": [
+    {
+      "scenario_id": "SCEN-01-DISLOCATION-CRISIS",
+      "title": "Severe Market Dislocation & Secondary Market Illiquidity",
+      "description": "SEBI declares market dislocation following sovereign yield spike. 18% cumulative redemption wave.",
+      "dislocation_active": true,
+      "net_outflow_pct": 18.5,
+      "target_scheme": "credit_risk"
+    },
+    {
+      "scenario_id": "SCEN-02-NORMAL-STRESS-SPIKE",
+      "title": "Quarter-End Corporate Advance Tax Outflow",
+      "description": "Normal market conditions, but corporate redemption reaches 6.8% breaching 5% discretionary threshold.",
+      "dislocation_active": false,
+      "net_outflow_pct": 6.8,
+      "target_scheme": "medium_duration"
+    },
+    {
+      "scenario_id": "SCEN-03-RETAIL-EXEMPT-TRANSACTION",
+      "title": "Retail Investor \u20b91.5L Redemption",
+      "description": "Retail transaction under \u20b92 Lakh threshold; exempt from swing pricing even during stress.",
+      "dislocation_active": true,
+      "net_outflow_pct": 12.0,
+      "target_scheme": "dynamic_bond"
+    },
+    {
+      "scenario_id": "SCEN-04-EXEMPT-LIQUID-FUND",
+      "title": "Large Institutional Redemption in Liquid Fund",
+      "description": "Liquid and Overnight schemes are statutorily exempt from swing pricing framework.",
+      "dislocation_active": true,
+      "net_outflow_pct": 15.0,
+      "target_scheme": "liquid"
     }
   ]
 }

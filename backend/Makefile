@@ -1,13 +1,13 @@
 .PHONY: start dev test format lint clean check
 
 start:
-	uv run uvicorn main:app --host 0.0.0.0 --port 8000
+	PYTHONPATH=. uv run uvicorn main:app --host 0.0.0.0 --port 8120
 
 dev:
-	uv run uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+	PYTHONPATH=. uv run uvicorn main:app --host 0.0.0.0 --port 8120 --reload
 
 test:
-	PYTHONPATH=.. uv run pytest
+	PYTHONPATH=. uv run pytest
 
 format:
 	uv run ruff format .
@@ -20,4 +20,4 @@ clean:
 
 check:
 	uv run ruff check .
-	PYTHONPATH=.. uv run pytest
+	PYTHONPATH=. uv run pytest

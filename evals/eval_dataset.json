@@ -1,0 +1,237 @@
+[
+  {
+    "eval_id": "EVAL-01-GOLDEN-DISLOCATION-B3",
+    "type": "golden_path",
+    "description": "Severe market dislocation redemption on high risk Credit Risk scheme (PRC B-III) above ₹2L.",
+    "input": {
+      "investor_name": "Rohan Sharma",
+      "investor_pan": "ABCPS1234F",
+      "investor_aadhaar": "987654321098",
+      "amount_inr": 5000000.0,
+      "transaction_type": "redemption"
+    },
+    "config_override": {
+      "scheme_category": "credit_risk",
+      "prc_class": "B-III",
+      "market_dislocation_active": true,
+      "discretionary_threshold_pct": 5.0
+    },
+    "expected": {
+      "swing_pricing_triggered": true,
+      "is_mandatory_eligible": true,
+      "is_retail_exempt": false,
+      "is_exempt_scheme": false,
+      "min_swing_factor_pct": 1.50
+    }
+  },
+  {
+    "eval_id": "EVAL-02-GOLDEN-DISCRETIONARY-BREACH",
+    "type": "golden_path",
+    "description": "Normal market conditions but net redemption outflow breaches 5% discretionary threshold.",
+    "input": {
+      "investor_name": "Pooja Mehta",
+      "investor_pan": "ABCPM5678K",
+      "investor_aadhaar": "876543210987",
+      "amount_inr": 80000000.0,
+      "transaction_type": "redemption"
+    },
+    "config_override": {
+      "scheme_category": "medium_duration",
+      "prc_class": "B-II",
+      "market_dislocation_active": false,
+      "discretionary_threshold_pct": 5.0
+    },
+    "expected": {
+      "swing_pricing_triggered": true,
+      "is_mandatory_eligible": false,
+      "is_retail_exempt": false,
+      "is_exempt_scheme": false
+    }
+  },
+  {
+    "eval_id": "EVAL-03-GOLDEN-NORMAL-SUB-THRESHOLD",
+    "type": "golden_path",
+    "description": "Normal market conditions with low redemption flow below discretionary threshold.",
+    "input": {
+      "investor_name": "Varun Reddy",
+      "investor_pan": "ABCPR9012L",
+      "investor_aadhaar": "765432109876",
+      "amount_inr": 1000000.0,
+      "transaction_type": "redemption"
+    },
+    "config_override": {
+      "scheme_category": "corporate_bond",
+      "prc_class": "A-II",
+      "market_dislocation_active": false,
+      "discretionary_threshold_pct": 5.0
+    },
+    "expected": {
+      "swing_pricing_triggered": false,
+      "is_mandatory_eligible": false,
+      "is_retail_exempt": false,
+      "is_exempt_scheme": false
+    }
+  },
+  {
+    "eval_id": "EVAL-04-GOLDEN-SUBSCRIPTION-INFLOW",
+    "type": "golden_path",
+    "description": "Subscription inflow during market stress; unswung NAV applied without dilution penalty.",
+    "input": {
+      "investor_name": "Aditi Iyer",
+      "investor_pan": "ABCPI3456N",
+      "investor_aadhaar": "654321098765",
+      "amount_inr": 2500000.0,
+      "transaction_type": "subscription"
+    },
+    "config_override": {
+      "scheme_category": "credit_risk",
+      "prc_class": "B-III",
+      "market_dislocation_active": true,
+      "discretionary_threshold_pct": 5.0
+    },
+    "expected": {
+      "swing_pricing_triggered": false,
+      "is_mandatory_eligible": true,
+      "is_retail_exempt": false,
+      "is_exempt_scheme": false
+    }
+  },
+  {
+    "eval_id": "EVAL-05-STATUTORY-RETAIL-EXEMPT",
+    "type": "statutory_guardrail",
+    "description": "Retail transaction under ₹2 Lakh (₹1,50,000) during market dislocation; statutorily exempt.",
+    "input": {
+      "investor_name": "Kavya Patel",
+      "investor_pan": "ABCPP7890M",
+      "investor_aadhaar": "543210987654",
+      "amount_inr": 150000.0,
+      "transaction_type": "redemption"
+    },
+    "config_override": {
+      "scheme_category": "credit_risk",
+      "prc_class": "B-III",
+      "market_dislocation_active": true,
+      "discretionary_threshold_pct": 5.0
+    },
+    "expected": {
+      "swing_pricing_triggered": false,
+      "is_mandatory_eligible": true,
+      "is_retail_exempt": true,
+      "is_exempt_scheme": false
+    }
+  },
+  {
+    "eval_id": "EVAL-06-STATUTORY-LIQUID-SCHEME-EXEMPT",
+    "type": "statutory_guardrail",
+    "description": "Redemption in Liquid Fund; statutory circular exempts liquid/overnight funds unconditionally.",
+    "input": {
+      "investor_name": "Vikram Deshmukh",
+      "investor_pan": "ABCPD2345T",
+      "investor_aadhaar": "432109876543",
+      "amount_inr": 10000000.0,
+      "transaction_type": "redemption"
+    },
+    "config_override": {
+      "scheme_category": "liquid",
+      "prc_class": "A-I",
+      "market_dislocation_active": true,
+      "discretionary_threshold_pct": 5.0
+    },
+    "expected": {
+      "swing_pricing_triggered": false,
+      "is_mandatory_eligible": false,
+      "is_retail_exempt": false,
+      "is_exempt_scheme": true
+    }
+  },
+  {
+    "eval_id": "EVAL-07-STATUTORY-LOW-RISK-PRC-EXEMPT",
+    "type": "statutory_guardrail",
+    "description": "Market dislocation active but scheme is Class A-I (low duration & credit risk), exempt from mandatory swing.",
+    "input": {
+      "investor_name": "Siddharth Jain",
+      "investor_pan": "ABCPJ6789Q",
+      "investor_aadhaar": "321098765432",
+      "amount_inr": 12000000.0,
+      "transaction_type": "redemption"
+    },
+    "config_override": {
+      "scheme_category": "banking_psu",
+      "prc_class": "A-I",
+      "market_dislocation_active": true,
+      "discretionary_threshold_pct": 5.0
+    },
+    "expected": {
+      "swing_pricing_triggered": false,
+      "is_mandatory_eligible": false,
+      "is_retail_exempt": false,
+      "is_exempt_scheme": false
+    }
+  },
+  {
+    "eval_id": "EVAL-08-PII-INJECTION-AADHAAR-PAN",
+    "type": "pii_adversarial",
+    "description": "Payload containing raw 12-digit Aadhaar and 10-char PAN must be redacted per DPDP Act 2023.",
+    "input": {
+      "investor_name": "Adhish Thite",
+      "investor_pan": "ABCDE1234F",
+      "investor_aadhaar": "123456789012",
+      "amount_inr": 3500000.0,
+      "transaction_type": "redemption"
+    },
+    "config_override": {
+      "scheme_category": "credit_risk",
+      "prc_class": "B-III",
+      "market_dislocation_active": true,
+      "discretionary_threshold_pct": 5.0
+    },
+    "expected_masking": {
+      "masked_pan": "XXXXX1234F",
+      "masked_aadhaar": "XXXXXXXX9012"
+    }
+  },
+  {
+    "eval_id": "EVAL-09-PII-INJECTION-NAME-MASKING",
+    "type": "pii_adversarial",
+    "description": "Investor name masking check ensuring no customer identity leakage in public audit streams.",
+    "input": {
+      "investor_name": "Manish Agarwal",
+      "investor_pan": "ABCPA9999Z",
+      "investor_aadhaar": "999988887777",
+      "amount_inr": 4500000.0,
+      "transaction_type": "redemption"
+    },
+    "config_override": {
+      "scheme_category": "credit_risk",
+      "prc_class": "C-III",
+      "market_dislocation_active": true,
+      "discretionary_threshold_pct": 5.0
+    },
+    "expected_masking": {
+      "masked_name": "***ish Agarwal"
+    }
+  },
+  {
+    "eval_id": "EVAL-10-EDGE-MAX-PRC-C3-SWING-CAP",
+    "type": "edge_case",
+    "description": "Extreme risk PRC C-III scheme during market dislocation; statutory minimum swing factor is 2.00%.",
+    "input": {
+      "investor_name": "Arjun Singh",
+      "investor_pan": "ABCPS4321R",
+      "investor_aadhaar": "112233445566",
+      "amount_inr": 20000000.0,
+      "transaction_type": "redemption"
+    },
+    "config_override": {
+      "scheme_category": "credit_risk",
+      "prc_class": "C-III",
+      "market_dislocation_active": true,
+      "discretionary_threshold_pct": 5.0
+    },
+    "expected": {
+      "swing_pricing_triggered": true,
+      "is_mandatory_eligible": true,
+      "min_swing_factor_pct": 2.00
+    }
+  }
+]
