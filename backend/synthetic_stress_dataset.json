@@ -1,0 +1,1602 @@
+[
+  {
+    "scenario_id": "SCENARIO_001",
+    "aum": 23781304652.62,
+    "initial_nav": 131.69,
+    "net_outflow_pct": 13.28,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "A-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4233,
+      "semi_liquid_ratio": 0.1388,
+      "illiquid_ratio": 0.4379
+    },
+    "investor_name": "***MASKED_INVESTOR_831***",
+    "investor_pan": "XXXXX8836F",
+    "investor_aadhaar": "XXXX-XXXX-2944"
+  },
+  {
+    "scenario_id": "SCENARIO_002",
+    "aum": 23523716671.27,
+    "initial_nav": 215.9843,
+    "net_outflow_pct": 15.06,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "B-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2976,
+      "semi_liquid_ratio": 0.1128,
+      "illiquid_ratio": 0.5896
+    },
+    "investor_name": "***MASKED_INVESTOR_839***",
+    "investor_pan": "XXXXX3112F",
+    "investor_aadhaar": "XXXX-XXXX-7713"
+  },
+  {
+    "scenario_id": "SCENARIO_003",
+    "aum": 30474385331.73,
+    "initial_nav": 112.6377,
+    "net_outflow_pct": 5.76,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "A-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.186,
+      "semi_liquid_ratio": 0.6694,
+      "illiquid_ratio": 0.1446
+    },
+    "investor_name": "Priya Sharma",
+    "investor_pan": "YYYAX0024G",
+    "investor_aadhaar": "938954970928"
+  },
+  {
+    "scenario_id": "SCENARIO_004",
+    "aum": 21357882146.39,
+    "initial_nav": 209.2039,
+    "net_outflow_pct": 18.86,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "A-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6449,
+      "semi_liquid_ratio": 0.2214,
+      "illiquid_ratio": 0.1337
+    },
+    "investor_name": "***MASKED_INVESTOR_449***",
+    "investor_pan": "XXXXX6888F",
+    "investor_aadhaar": "XXXX-XXXX-8573"
+  },
+  {
+    "scenario_id": "SCENARIO_005",
+    "aum": 34906595708.15,
+    "initial_nav": 205.9253,
+    "net_outflow_pct": 20.64,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "A-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2651,
+      "semi_liquid_ratio": 0.4012,
+      "illiquid_ratio": 0.3336
+    },
+    "investor_name": "***MASKED_INVESTOR_287***",
+    "investor_pan": "XXXXX5374F",
+    "investor_aadhaar": "XXXX-XXXX-8595"
+  },
+  {
+    "scenario_id": "SCENARIO_006",
+    "aum": 43330853442.85,
+    "initial_nav": 120.1818,
+    "net_outflow_pct": 4.48,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "A-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.3617,
+      "semi_liquid_ratio": 0.4395,
+      "illiquid_ratio": 0.1988
+    },
+    "investor_name": "***MASKED_INVESTOR_308***",
+    "investor_pan": "XXXXX6206F",
+    "investor_aadhaar": "XXXX-XXXX-7592"
+  },
+  {
+    "scenario_id": "SCENARIO_007",
+    "aum": 5777169120.82,
+    "initial_nav": 172.79,
+    "net_outflow_pct": 10.08,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "B-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2489,
+      "semi_liquid_ratio": 0.556,
+      "illiquid_ratio": 0.1951
+    },
+    "investor_name": "***MASKED_INVESTOR_354***",
+    "investor_pan": "XXXXX9751F",
+    "investor_aadhaar": "XXXX-XXXX-4499"
+  },
+  {
+    "scenario_id": "SCENARIO_008",
+    "aum": 14130989975.03,
+    "initial_nav": 144.1739,
+    "net_outflow_pct": 9.08,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "B-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.1307,
+      "semi_liquid_ratio": 0.2027,
+      "illiquid_ratio": 0.6666
+    },
+    "investor_name": "***MASKED_INVESTOR_618***",
+    "investor_pan": "XXXXX1985F",
+    "investor_aadhaar": "XXXX-XXXX-8717"
+  },
+  {
+    "scenario_id": "SCENARIO_009",
+    "aum": 21644512202.73,
+    "initial_nav": 249.649,
+    "net_outflow_pct": 23.17,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.5847,
+      "semi_liquid_ratio": 0.2027,
+      "illiquid_ratio": 0.2126
+    },
+    "investor_name": "Ananya Nair",
+    "investor_pan": "RLGDO1853G",
+    "investor_aadhaar": "022158330776"
+  },
+  {
+    "scenario_id": "SCENARIO_010",
+    "aum": 21752280115.61,
+    "initial_nav": 193.7069,
+    "net_outflow_pct": 6.24,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "A-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6618,
+      "semi_liquid_ratio": 0.1959,
+      "illiquid_ratio": 0.1423
+    },
+    "investor_name": "***MASKED_INVESTOR_197***",
+    "investor_pan": "XXXXX8665F",
+    "investor_aadhaar": "XXXX-XXXX-3542"
+  },
+  {
+    "scenario_id": "SCENARIO_011",
+    "aum": 35745132287.39,
+    "initial_nav": 101.653,
+    "net_outflow_pct": 18.97,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.1913,
+      "semi_liquid_ratio": 0.3646,
+      "illiquid_ratio": 0.4442
+    },
+    "investor_name": "***MASKED_INVESTOR_305***",
+    "investor_pan": "XXXXX7851F",
+    "investor_aadhaar": "XXXX-XXXX-2685"
+  },
+  {
+    "scenario_id": "SCENARIO_012",
+    "aum": 37949006185.67,
+    "initial_nav": 172.8816,
+    "net_outflow_pct": 12.31,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "B-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6099,
+      "semi_liquid_ratio": 0.2229,
+      "illiquid_ratio": 0.1672
+    },
+    "investor_name": "***MASKED_INVESTOR_466***",
+    "investor_pan": "XXXXX5197F",
+    "investor_aadhaar": "XXXX-XXXX-4831"
+  },
+  {
+    "scenario_id": "SCENARIO_013",
+    "aum": 2848598568.71,
+    "initial_nav": 38.5155,
+    "net_outflow_pct": 14.19,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.436,
+      "semi_liquid_ratio": 0.2425,
+      "illiquid_ratio": 0.3215
+    },
+    "investor_name": "***MASKED_INVESTOR_637***",
+    "investor_pan": "XXXXX4031F",
+    "investor_aadhaar": "XXXX-XXXX-3246"
+  },
+  {
+    "scenario_id": "SCENARIO_014",
+    "aum": 18211115252.59,
+    "initial_nav": 137.9762,
+    "net_outflow_pct": 14.98,
+    "risk_o_meter": "LOW",
+    "prc_cell": "B-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.1804,
+      "semi_liquid_ratio": 0.4375,
+      "illiquid_ratio": 0.3821
+    },
+    "investor_name": "***MASKED_INVESTOR_966***",
+    "investor_pan": "XXXXX2402F",
+    "investor_aadhaar": "XXXX-XXXX-9298"
+  },
+  {
+    "scenario_id": "SCENARIO_015",
+    "aum": 8914733147.28,
+    "initial_nav": 74.8168,
+    "net_outflow_pct": 13.46,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.5142,
+      "semi_liquid_ratio": 0.3032,
+      "illiquid_ratio": 0.1826
+    },
+    "investor_name": "***MASKED_INVESTOR_617***",
+    "investor_pan": "XXXXX2903F",
+    "investor_aadhaar": "XXXX-XXXX-8064"
+  },
+  {
+    "scenario_id": "SCENARIO_016",
+    "aum": 22813425924.62,
+    "initial_nav": 219.9153,
+    "net_outflow_pct": 21.88,
+    "risk_o_meter": "LOW",
+    "prc_cell": "B-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2812,
+      "semi_liquid_ratio": 0.4906,
+      "illiquid_ratio": 0.2282
+    },
+    "investor_name": "***MASKED_INVESTOR_210***",
+    "investor_pan": "XXXXX1941F",
+    "investor_aadhaar": "XXXX-XXXX-2543"
+  },
+  {
+    "scenario_id": "SCENARIO_017",
+    "aum": 27594755931.76,
+    "initial_nav": 230.5623,
+    "net_outflow_pct": 14.3,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "B-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.693,
+      "semi_liquid_ratio": 0.2246,
+      "illiquid_ratio": 0.0824
+    },
+    "investor_name": "***MASKED_INVESTOR_441***",
+    "investor_pan": "XXXXX6328F",
+    "investor_aadhaar": "XXXX-XXXX-6671"
+  },
+  {
+    "scenario_id": "SCENARIO_018",
+    "aum": 36827270842.47,
+    "initial_nav": 135.7584,
+    "net_outflow_pct": 16.6,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2695,
+      "semi_liquid_ratio": 0.4622,
+      "illiquid_ratio": 0.2683
+    },
+    "investor_name": "***MASKED_INVESTOR_462***",
+    "investor_pan": "XXXXX5771F",
+    "investor_aadhaar": "XXXX-XXXX-1253"
+  },
+  {
+    "scenario_id": "SCENARIO_019",
+    "aum": 12896916553.49,
+    "initial_nav": 212.5881,
+    "net_outflow_pct": 10.39,
+    "risk_o_meter": "LOW",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6517,
+      "semi_liquid_ratio": 0.2767,
+      "illiquid_ratio": 0.0717
+    },
+    "investor_name": "Priya Joshi",
+    "investor_pan": "HJTCX4264D",
+    "investor_aadhaar": "016867266754"
+  },
+  {
+    "scenario_id": "SCENARIO_020",
+    "aum": 4082367172.06,
+    "initial_nav": 121.6874,
+    "net_outflow_pct": 1.08,
+    "risk_o_meter": "LOW",
+    "prc_cell": "A-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.5278,
+      "semi_liquid_ratio": 0.3303,
+      "illiquid_ratio": 0.1419
+    },
+    "investor_name": "***MASKED_INVESTOR_521***",
+    "investor_pan": "XXXXX2996F",
+    "investor_aadhaar": "XXXX-XXXX-9114"
+  },
+  {
+    "scenario_id": "SCENARIO_021",
+    "aum": 46610792950.1,
+    "initial_nav": 102.7933,
+    "net_outflow_pct": 13.15,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4307,
+      "semi_liquid_ratio": 0.422,
+      "illiquid_ratio": 0.1474
+    },
+    "investor_name": "***MASKED_INVESTOR_141***",
+    "investor_pan": "XXXXX1371F",
+    "investor_aadhaar": "XXXX-XXXX-3258"
+  },
+  {
+    "scenario_id": "SCENARIO_022",
+    "aum": 13156598437.09,
+    "initial_nav": 169.0884,
+    "net_outflow_pct": 13.8,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.3145,
+      "semi_liquid_ratio": 0.58,
+      "illiquid_ratio": 0.1055
+    },
+    "investor_name": "Amit Sharma",
+    "investor_pan": "XAXWL8912B",
+    "investor_aadhaar": "355738311957"
+  },
+  {
+    "scenario_id": "SCENARIO_023",
+    "aum": 34656690469.97,
+    "initial_nav": 78.2975,
+    "net_outflow_pct": 8.42,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "B-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.629,
+      "semi_liquid_ratio": 0.2544,
+      "illiquid_ratio": 0.1166
+    },
+    "investor_name": "***MASKED_INVESTOR_480***",
+    "investor_pan": "XXXXX9138F",
+    "investor_aadhaar": "XXXX-XXXX-3431"
+  },
+  {
+    "scenario_id": "SCENARIO_024",
+    "aum": 27918902863.91,
+    "initial_nav": 105.4591,
+    "net_outflow_pct": 23.91,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2384,
+      "semi_liquid_ratio": 0.4396,
+      "illiquid_ratio": 0.3219
+    },
+    "investor_name": "***MASKED_INVESTOR_940***",
+    "investor_pan": "XXXXX7801F",
+    "investor_aadhaar": "XXXX-XXXX-5408"
+  },
+  {
+    "scenario_id": "SCENARIO_025",
+    "aum": 26202233086.71,
+    "initial_nav": 93.3283,
+    "net_outflow_pct": 3.57,
+    "risk_o_meter": "LOW",
+    "prc_cell": "A-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2058,
+      "semi_liquid_ratio": 0.6666,
+      "illiquid_ratio": 0.1275
+    },
+    "investor_name": "***MASKED_INVESTOR_801***",
+    "investor_pan": "XXXXX2673F",
+    "investor_aadhaar": "XXXX-XXXX-1247"
+  },
+  {
+    "scenario_id": "SCENARIO_026",
+    "aum": 8192867417.8,
+    "initial_nav": 133.9502,
+    "net_outflow_pct": 8.64,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.3758,
+      "semi_liquid_ratio": 0.5458,
+      "illiquid_ratio": 0.0784
+    },
+    "investor_name": "***MASKED_INVESTOR_419***",
+    "investor_pan": "XXXXX7318F",
+    "investor_aadhaar": "XXXX-XXXX-4606"
+  },
+  {
+    "scenario_id": "SCENARIO_027",
+    "aum": 32721554541.23,
+    "initial_nav": 124.7121,
+    "net_outflow_pct": 0.82,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "A-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2571,
+      "semi_liquid_ratio": 0.2787,
+      "illiquid_ratio": 0.4643
+    },
+    "investor_name": "***MASKED_INVESTOR_788***",
+    "investor_pan": "XXXXX7282F",
+    "investor_aadhaar": "XXXX-XXXX-8530"
+  },
+  {
+    "scenario_id": "SCENARIO_028",
+    "aum": 34438492373.86,
+    "initial_nav": 239.6807,
+    "net_outflow_pct": 11.32,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "B-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.3316,
+      "semi_liquid_ratio": 0.4986,
+      "illiquid_ratio": 0.1698
+    },
+    "investor_name": "***MASKED_INVESTOR_855***",
+    "investor_pan": "XXXXX5526F",
+    "investor_aadhaar": "XXXX-XXXX-2589"
+  },
+  {
+    "scenario_id": "SCENARIO_029",
+    "aum": 35390426206.75,
+    "initial_nav": 22.973,
+    "net_outflow_pct": 24.39,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "B-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6416,
+      "semi_liquid_ratio": 0.2649,
+      "illiquid_ratio": 0.0935
+    },
+    "investor_name": "***MASKED_INVESTOR_307***",
+    "investor_pan": "XXXXX9725F",
+    "investor_aadhaar": "XXXX-XXXX-5721"
+  },
+  {
+    "scenario_id": "SCENARIO_030",
+    "aum": 5325048310.44,
+    "initial_nav": 227.1092,
+    "net_outflow_pct": 24.72,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.5887,
+      "semi_liquid_ratio": 0.1833,
+      "illiquid_ratio": 0.228
+    },
+    "investor_name": "***MASKED_INVESTOR_948***",
+    "investor_pan": "XXXXX1529F",
+    "investor_aadhaar": "XXXX-XXXX-9709"
+  },
+  {
+    "scenario_id": "SCENARIO_031",
+    "aum": 5586567604.3,
+    "initial_nav": 204.5747,
+    "net_outflow_pct": 24.56,
+    "risk_o_meter": "LOW",
+    "prc_cell": "A-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.112,
+      "semi_liquid_ratio": 0.193,
+      "illiquid_ratio": 0.695
+    },
+    "investor_name": "Rahul Mehta",
+    "investor_pan": "QPGEA0464L",
+    "investor_aadhaar": "722923824281"
+  },
+  {
+    "scenario_id": "SCENARIO_032",
+    "aum": 25589592795.46,
+    "initial_nav": 34.7209,
+    "net_outflow_pct": 21.81,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "B-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2469,
+      "semi_liquid_ratio": 0.2965,
+      "illiquid_ratio": 0.4566
+    },
+    "investor_name": "***MASKED_INVESTOR_633***",
+    "investor_pan": "XXXXX9641F",
+    "investor_aadhaar": "XXXX-XXXX-8537"
+  },
+  {
+    "scenario_id": "SCENARIO_033",
+    "aum": 12750771988.32,
+    "initial_nav": 82.4046,
+    "net_outflow_pct": 6.66,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4771,
+      "semi_liquid_ratio": 0.2678,
+      "illiquid_ratio": 0.2552
+    },
+    "investor_name": "***MASKED_INVESTOR_320***",
+    "investor_pan": "XXXXX2329F",
+    "investor_aadhaar": "XXXX-XXXX-6021"
+  },
+  {
+    "scenario_id": "SCENARIO_034",
+    "aum": 35347448902.86,
+    "initial_nav": 152.8179,
+    "net_outflow_pct": 0.34,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.1684,
+      "semi_liquid_ratio": 0.448,
+      "illiquid_ratio": 0.3837
+    },
+    "investor_name": "***MASKED_INVESTOR_854***",
+    "investor_pan": "XXXXX9257F",
+    "investor_aadhaar": "XXXX-XXXX-5568"
+  },
+  {
+    "scenario_id": "SCENARIO_035",
+    "aum": 28011078379.56,
+    "initial_nav": 217.6368,
+    "net_outflow_pct": 19.62,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.1492,
+      "semi_liquid_ratio": 0.3056,
+      "illiquid_ratio": 0.5453
+    },
+    "investor_name": "***MASKED_INVESTOR_873***",
+    "investor_pan": "XXXXX2072F",
+    "investor_aadhaar": "XXXX-XXXX-1197"
+  },
+  {
+    "scenario_id": "SCENARIO_036",
+    "aum": 48364720142.48,
+    "initial_nav": 197.2348,
+    "net_outflow_pct": 17.32,
+    "risk_o_meter": "LOW",
+    "prc_cell": "B-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.5073,
+      "semi_liquid_ratio": 0.1992,
+      "illiquid_ratio": 0.2936
+    },
+    "investor_name": "***MASKED_INVESTOR_192***",
+    "investor_pan": "XXXXX5597F",
+    "investor_aadhaar": "XXXX-XXXX-5602"
+  },
+  {
+    "scenario_id": "SCENARIO_037",
+    "aum": 24965989958.93,
+    "initial_nav": 88.7728,
+    "net_outflow_pct": 10.58,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "C-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.1194,
+      "semi_liquid_ratio": 0.6261,
+      "illiquid_ratio": 0.2545
+    },
+    "investor_name": "***MASKED_INVESTOR_961***",
+    "investor_pan": "XXXXX1225F",
+    "investor_aadhaar": "XXXX-XXXX-7375"
+  },
+  {
+    "scenario_id": "SCENARIO_038",
+    "aum": 1866184407.07,
+    "initial_nav": 103.2745,
+    "net_outflow_pct": 3.83,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "B-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2332,
+      "semi_liquid_ratio": 0.2435,
+      "illiquid_ratio": 0.5233
+    },
+    "investor_name": "***MASKED_INVESTOR_198***",
+    "investor_pan": "XXXXX2372F",
+    "investor_aadhaar": "XXXX-XXXX-4515"
+  },
+  {
+    "scenario_id": "SCENARIO_039",
+    "aum": 3571971558.92,
+    "initial_nav": 64.4512,
+    "net_outflow_pct": 23.18,
+    "risk_o_meter": "LOW",
+    "prc_cell": "B-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.3054,
+      "semi_liquid_ratio": 0.1492,
+      "illiquid_ratio": 0.5454
+    },
+    "investor_name": "***MASKED_INVESTOR_495***",
+    "investor_pan": "XXXXX2313F",
+    "investor_aadhaar": "XXXX-XXXX-6067"
+  },
+  {
+    "scenario_id": "SCENARIO_040",
+    "aum": 47284672487.8,
+    "initial_nav": 215.7663,
+    "net_outflow_pct": 22.67,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2572,
+      "semi_liquid_ratio": 0.6706,
+      "illiquid_ratio": 0.0723
+    },
+    "investor_name": "***MASKED_INVESTOR_263***",
+    "investor_pan": "XXXXX9138F",
+    "investor_aadhaar": "XXXX-XXXX-4536"
+  },
+  {
+    "scenario_id": "SCENARIO_041",
+    "aum": 36615239949.53,
+    "initial_nav": 68.0809,
+    "net_outflow_pct": 19.24,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "C-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.3178,
+      "semi_liquid_ratio": 0.1619,
+      "illiquid_ratio": 0.5203
+    },
+    "investor_name": "***MASKED_INVESTOR_919***",
+    "investor_pan": "XXXXX6406F",
+    "investor_aadhaar": "XXXX-XXXX-5480"
+  },
+  {
+    "scenario_id": "SCENARIO_042",
+    "aum": 2009692146.64,
+    "initial_nav": 220.1244,
+    "net_outflow_pct": 20.26,
+    "risk_o_meter": "LOW",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4337,
+      "semi_liquid_ratio": 0.3786,
+      "illiquid_ratio": 0.1877
+    },
+    "investor_name": "***MASKED_INVESTOR_522***",
+    "investor_pan": "XXXXX3240F",
+    "investor_aadhaar": "XXXX-XXXX-9432"
+  },
+  {
+    "scenario_id": "SCENARIO_043",
+    "aum": 15471368051.88,
+    "initial_nav": 201.0305,
+    "net_outflow_pct": 2.8,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2718,
+      "semi_liquid_ratio": 0.1717,
+      "illiquid_ratio": 0.5565
+    },
+    "investor_name": "***MASKED_INVESTOR_493***",
+    "investor_pan": "XXXXX8840F",
+    "investor_aadhaar": "XXXX-XXXX-1352"
+  },
+  {
+    "scenario_id": "SCENARIO_044",
+    "aum": 14387051480.99,
+    "initial_nav": 30.5573,
+    "net_outflow_pct": 4.08,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.3764,
+      "semi_liquid_ratio": 0.3738,
+      "illiquid_ratio": 0.2498
+    },
+    "investor_name": "***MASKED_INVESTOR_841***",
+    "investor_pan": "XXXXX9898F",
+    "investor_aadhaar": "XXXX-XXXX-3130"
+  },
+  {
+    "scenario_id": "SCENARIO_045",
+    "aum": 3666915165.61,
+    "initial_nav": 15.8423,
+    "net_outflow_pct": 1.53,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.1754,
+      "semi_liquid_ratio": 0.1042,
+      "illiquid_ratio": 0.7204
+    },
+    "investor_name": "***MASKED_INVESTOR_501***",
+    "investor_pan": "XXXXX8188F",
+    "investor_aadhaar": "XXXX-XXXX-2493"
+  },
+  {
+    "scenario_id": "SCENARIO_046",
+    "aum": 46736322563.7,
+    "initial_nav": 217.4697,
+    "net_outflow_pct": 10.0,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.1301,
+      "semi_liquid_ratio": 0.4956,
+      "illiquid_ratio": 0.3743
+    },
+    "investor_name": "***MASKED_INVESTOR_924***",
+    "investor_pan": "XXXXX8105F",
+    "investor_aadhaar": "XXXX-XXXX-4064"
+  },
+  {
+    "scenario_id": "SCENARIO_047",
+    "aum": 5519598987.26,
+    "initial_nav": 171.3266,
+    "net_outflow_pct": 21.91,
+    "risk_o_meter": "LOW",
+    "prc_cell": "C-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.293,
+      "semi_liquid_ratio": 0.3933,
+      "illiquid_ratio": 0.3137
+    },
+    "investor_name": "***MASKED_INVESTOR_830***",
+    "investor_pan": "XXXXX9597F",
+    "investor_aadhaar": "XXXX-XXXX-1128"
+  },
+  {
+    "scenario_id": "SCENARIO_048",
+    "aum": 39238020188.22,
+    "initial_nav": 41.012,
+    "net_outflow_pct": 13.09,
+    "risk_o_meter": "LOW",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.3562,
+      "semi_liquid_ratio": 0.1573,
+      "illiquid_ratio": 0.4866
+    },
+    "investor_name": "***MASKED_INVESTOR_631***",
+    "investor_pan": "XXXXX6707F",
+    "investor_aadhaar": "XXXX-XXXX-7124"
+  },
+  {
+    "scenario_id": "SCENARIO_049",
+    "aum": 33009564213.45,
+    "initial_nav": 204.6012,
+    "net_outflow_pct": 20.4,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.5426,
+      "semi_liquid_ratio": 0.3355,
+      "illiquid_ratio": 0.1219
+    },
+    "investor_name": "Suresh Gupta",
+    "investor_pan": "VKIDP1856Z",
+    "investor_aadhaar": "097199934563"
+  },
+  {
+    "scenario_id": "SCENARIO_050",
+    "aum": 10077121232.4,
+    "initial_nav": 166.0846,
+    "net_outflow_pct": 9.98,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6944,
+      "semi_liquid_ratio": 0.1401,
+      "illiquid_ratio": 0.1654
+    },
+    "investor_name": "***MASKED_INVESTOR_537***",
+    "investor_pan": "XXXXX8316F",
+    "investor_aadhaar": "XXXX-XXXX-9183"
+  },
+  {
+    "scenario_id": "SCENARIO_051",
+    "aum": 31382651510.09,
+    "initial_nav": 46.0003,
+    "net_outflow_pct": 8.46,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "B-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4521,
+      "semi_liquid_ratio": 0.1453,
+      "illiquid_ratio": 0.4026
+    },
+    "investor_name": "***MASKED_INVESTOR_723***",
+    "investor_pan": "XXXXX4845F",
+    "investor_aadhaar": "XXXX-XXXX-7729"
+  },
+  {
+    "scenario_id": "SCENARIO_052",
+    "aum": 25995794283.77,
+    "initial_nav": 41.193,
+    "net_outflow_pct": 16.87,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.3114,
+      "semi_liquid_ratio": 0.5629,
+      "illiquid_ratio": 0.1257
+    },
+    "investor_name": "***MASKED_INVESTOR_745***",
+    "investor_pan": "XXXXX7887F",
+    "investor_aadhaar": "XXXX-XXXX-6198"
+  },
+  {
+    "scenario_id": "SCENARIO_053",
+    "aum": 30362142579.03,
+    "initial_nav": 131.3258,
+    "net_outflow_pct": 6.43,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "B-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6655,
+      "semi_liquid_ratio": 0.2081,
+      "illiquid_ratio": 0.1264
+    },
+    "investor_name": "***MASKED_INVESTOR_960***",
+    "investor_pan": "XXXXX9284F",
+    "investor_aadhaar": "XXXX-XXXX-3928"
+  },
+  {
+    "scenario_id": "SCENARIO_054",
+    "aum": 20876788535.73,
+    "initial_nav": 103.2744,
+    "net_outflow_pct": 1.87,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4985,
+      "semi_liquid_ratio": 0.4026,
+      "illiquid_ratio": 0.0989
+    },
+    "investor_name": "***MASKED_INVESTOR_178***",
+    "investor_pan": "XXXXX8941F",
+    "investor_aadhaar": "XXXX-XXXX-9351"
+  },
+  {
+    "scenario_id": "SCENARIO_055",
+    "aum": 6295861219.84,
+    "initial_nav": 220.2226,
+    "net_outflow_pct": 13.73,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6907,
+      "semi_liquid_ratio": 0.1539,
+      "illiquid_ratio": 0.1554
+    },
+    "investor_name": "***MASKED_INVESTOR_463***",
+    "investor_pan": "XXXXX2863F",
+    "investor_aadhaar": "XXXX-XXXX-7161"
+  },
+  {
+    "scenario_id": "SCENARIO_056",
+    "aum": 47373780480.0,
+    "initial_nav": 69.1578,
+    "net_outflow_pct": 12.98,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4724,
+      "semi_liquid_ratio": 0.2917,
+      "illiquid_ratio": 0.2359
+    },
+    "investor_name": "Ananya Joshi",
+    "investor_pan": "QKHFV4390V",
+    "investor_aadhaar": "845260488310"
+  },
+  {
+    "scenario_id": "SCENARIO_057",
+    "aum": 38894719533.99,
+    "initial_nav": 147.291,
+    "net_outflow_pct": 18.88,
+    "risk_o_meter": "LOW",
+    "prc_cell": "C-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4183,
+      "semi_liquid_ratio": 0.1335,
+      "illiquid_ratio": 0.4482
+    },
+    "investor_name": "***MASKED_INVESTOR_530***",
+    "investor_pan": "XXXXX2483F",
+    "investor_aadhaar": "XXXX-XXXX-3054"
+  },
+  {
+    "scenario_id": "SCENARIO_058",
+    "aum": 22614038760.98,
+    "initial_nav": 150.4101,
+    "net_outflow_pct": 16.62,
+    "risk_o_meter": "LOW",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.5105,
+      "semi_liquid_ratio": 0.3924,
+      "illiquid_ratio": 0.0971
+    },
+    "investor_name": "***MASKED_INVESTOR_576***",
+    "investor_pan": "XXXXX6636F",
+    "investor_aadhaar": "XXXX-XXXX-8875"
+  },
+  {
+    "scenario_id": "SCENARIO_059",
+    "aum": 9686265763.49,
+    "initial_nav": 134.049,
+    "net_outflow_pct": 18.44,
+    "risk_o_meter": "LOW",
+    "prc_cell": "A-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2378,
+      "semi_liquid_ratio": 0.1586,
+      "illiquid_ratio": 0.6035
+    },
+    "investor_name": "***MASKED_INVESTOR_870***",
+    "investor_pan": "XXXXX5544F",
+    "investor_aadhaar": "XXXX-XXXX-5657"
+  },
+  {
+    "scenario_id": "SCENARIO_060",
+    "aum": 25800333758.68,
+    "initial_nav": 98.4043,
+    "net_outflow_pct": 1.54,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "B-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.1505,
+      "semi_liquid_ratio": 0.5883,
+      "illiquid_ratio": 0.2612
+    },
+    "investor_name": "***MASKED_INVESTOR_929***",
+    "investor_pan": "XXXXX9142F",
+    "investor_aadhaar": "XXXX-XXXX-6852"
+  },
+  {
+    "scenario_id": "SCENARIO_061",
+    "aum": 29967601286.96,
+    "initial_nav": 234.5709,
+    "net_outflow_pct": 18.63,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "A-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.3412,
+      "semi_liquid_ratio": 0.2909,
+      "illiquid_ratio": 0.3679
+    },
+    "investor_name": "***MASKED_INVESTOR_378***",
+    "investor_pan": "XXXXX8464F",
+    "investor_aadhaar": "XXXX-XXXX-1013"
+  },
+  {
+    "scenario_id": "SCENARIO_062",
+    "aum": 359219963.25,
+    "initial_nav": 99.5129,
+    "net_outflow_pct": 10.79,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.268,
+      "semi_liquid_ratio": 0.6443,
+      "illiquid_ratio": 0.0877
+    },
+    "investor_name": "Priya Verma",
+    "investor_pan": "GEPZN6742M",
+    "investor_aadhaar": "205809948381"
+  },
+  {
+    "scenario_id": "SCENARIO_063",
+    "aum": 13180847782.95,
+    "initial_nav": 155.5874,
+    "net_outflow_pct": 9.64,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4181,
+      "semi_liquid_ratio": 0.4079,
+      "illiquid_ratio": 0.174
+    },
+    "investor_name": "***MASKED_INVESTOR_730***",
+    "investor_pan": "XXXXX2444F",
+    "investor_aadhaar": "XXXX-XXXX-5091"
+  },
+  {
+    "scenario_id": "SCENARIO_064",
+    "aum": 18972055211.77,
+    "initial_nav": 34.9744,
+    "net_outflow_pct": 21.43,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "B-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2589,
+      "semi_liquid_ratio": 0.6425,
+      "illiquid_ratio": 0.0986
+    },
+    "investor_name": "Neha Mehta",
+    "investor_pan": "VPXFH3393O",
+    "investor_aadhaar": "698347913988"
+  },
+  {
+    "scenario_id": "SCENARIO_065",
+    "aum": 34649180464.67,
+    "initial_nav": 107.9918,
+    "net_outflow_pct": 16.0,
+    "risk_o_meter": "LOW",
+    "prc_cell": "B-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.5887,
+      "semi_liquid_ratio": 0.3174,
+      "illiquid_ratio": 0.0939
+    },
+    "investor_name": "***MASKED_INVESTOR_542***",
+    "investor_pan": "XXXXX4607F",
+    "investor_aadhaar": "XXXX-XXXX-1671"
+  },
+  {
+    "scenario_id": "SCENARIO_066",
+    "aum": 13785300501.25,
+    "initial_nav": 120.88,
+    "net_outflow_pct": 12.55,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.5817,
+      "semi_liquid_ratio": 0.1159,
+      "illiquid_ratio": 0.3024
+    },
+    "investor_name": "***MASKED_INVESTOR_623***",
+    "investor_pan": "XXXXX7936F",
+    "investor_aadhaar": "XXXX-XXXX-9633"
+  },
+  {
+    "scenario_id": "SCENARIO_067",
+    "aum": 21236562588.16,
+    "initial_nav": 134.7551,
+    "net_outflow_pct": 0.82,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.1049,
+      "semi_liquid_ratio": 0.385,
+      "illiquid_ratio": 0.5102
+    },
+    "investor_name": "***MASKED_INVESTOR_755***",
+    "investor_pan": "XXXXX2815F",
+    "investor_aadhaar": "XXXX-XXXX-2223"
+  },
+  {
+    "scenario_id": "SCENARIO_068",
+    "aum": 37002224974.76,
+    "initial_nav": 63.7551,
+    "net_outflow_pct": 22.37,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2989,
+      "semi_liquid_ratio": 0.237,
+      "illiquid_ratio": 0.4641
+    },
+    "investor_name": "***MASKED_INVESTOR_958***",
+    "investor_pan": "XXXXX9498F",
+    "investor_aadhaar": "XXXX-XXXX-8072"
+  },
+  {
+    "scenario_id": "SCENARIO_069",
+    "aum": 49730546444.87,
+    "initial_nav": 161.8281,
+    "net_outflow_pct": 16.73,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2147,
+      "semi_liquid_ratio": 0.2159,
+      "illiquid_ratio": 0.5695
+    },
+    "investor_name": "***MASKED_INVESTOR_865***",
+    "investor_pan": "XXXXX4868F",
+    "investor_aadhaar": "XXXX-XXXX-2249"
+  },
+  {
+    "scenario_id": "SCENARIO_070",
+    "aum": 27597979104.32,
+    "initial_nav": 142.9344,
+    "net_outflow_pct": 17.6,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "B-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2666,
+      "semi_liquid_ratio": 0.225,
+      "illiquid_ratio": 0.5084
+    },
+    "investor_name": "***MASKED_INVESTOR_292***",
+    "investor_pan": "XXXXX5332F",
+    "investor_aadhaar": "XXXX-XXXX-2134"
+  },
+  {
+    "scenario_id": "SCENARIO_071",
+    "aum": 48630250709.33,
+    "initial_nav": 187.8128,
+    "net_outflow_pct": 8.48,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "B-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2654,
+      "semi_liquid_ratio": 0.3902,
+      "illiquid_ratio": 0.3443
+    },
+    "investor_name": "***MASKED_INVESTOR_393***",
+    "investor_pan": "XXXXX7183F",
+    "investor_aadhaar": "XXXX-XXXX-6956"
+  },
+  {
+    "scenario_id": "SCENARIO_072",
+    "aum": 2398509214.76,
+    "initial_nav": 137.7425,
+    "net_outflow_pct": 19.0,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2357,
+      "semi_liquid_ratio": 0.6985,
+      "illiquid_ratio": 0.0658
+    },
+    "investor_name": "***MASKED_INVESTOR_424***",
+    "investor_pan": "XXXXX7728F",
+    "investor_aadhaar": "XXXX-XXXX-4008"
+  },
+  {
+    "scenario_id": "SCENARIO_073",
+    "aum": 23927162388.44,
+    "initial_nav": 189.8702,
+    "net_outflow_pct": 16.82,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "A-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6819,
+      "semi_liquid_ratio": 0.2344,
+      "illiquid_ratio": 0.0837
+    },
+    "investor_name": "***MASKED_INVESTOR_591***",
+    "investor_pan": "XXXXX3448F",
+    "investor_aadhaar": "XXXX-XXXX-3197"
+  },
+  {
+    "scenario_id": "SCENARIO_074",
+    "aum": 12779531635.45,
+    "initial_nav": 213.5833,
+    "net_outflow_pct": 16.34,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "B-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.5348,
+      "semi_liquid_ratio": 0.1054,
+      "illiquid_ratio": 0.3598
+    },
+    "investor_name": "***MASKED_INVESTOR_496***",
+    "investor_pan": "XXXXX6588F",
+    "investor_aadhaar": "XXXX-XXXX-8597"
+  },
+  {
+    "scenario_id": "SCENARIO_075",
+    "aum": 36956828695.9,
+    "initial_nav": 95.128,
+    "net_outflow_pct": 16.86,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "C-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6188,
+      "semi_liquid_ratio": 0.3306,
+      "illiquid_ratio": 0.0506
+    },
+    "investor_name": "***MASKED_INVESTOR_697***",
+    "investor_pan": "XXXXX3078F",
+    "investor_aadhaar": "XXXX-XXXX-2189"
+  },
+  {
+    "scenario_id": "SCENARIO_076",
+    "aum": 34036563160.22,
+    "initial_nav": 182.8831,
+    "net_outflow_pct": 16.17,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "C-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.366,
+      "semi_liquid_ratio": 0.537,
+      "illiquid_ratio": 0.097
+    },
+    "investor_name": "***MASKED_INVESTOR_211***",
+    "investor_pan": "XXXXX5223F",
+    "investor_aadhaar": "XXXX-XXXX-7971"
+  },
+  {
+    "scenario_id": "SCENARIO_077",
+    "aum": 44817986668.08,
+    "initial_nav": 121.9243,
+    "net_outflow_pct": 10.6,
+    "risk_o_meter": "LOW",
+    "prc_cell": "A-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6424,
+      "semi_liquid_ratio": 0.1137,
+      "illiquid_ratio": 0.2439
+    },
+    "investor_name": "***MASKED_INVESTOR_280***",
+    "investor_pan": "XXXXX4341F",
+    "investor_aadhaar": "XXXX-XXXX-1794"
+  },
+  {
+    "scenario_id": "SCENARIO_078",
+    "aum": 34065505557.19,
+    "initial_nav": 64.2688,
+    "net_outflow_pct": 5.18,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.1124,
+      "semi_liquid_ratio": 0.1177,
+      "illiquid_ratio": 0.77
+    },
+    "investor_name": "Sneha Patel",
+    "investor_pan": "WZCAA5521S",
+    "investor_aadhaar": "935943794536"
+  },
+  {
+    "scenario_id": "SCENARIO_079",
+    "aum": 5727336584.71,
+    "initial_nav": 54.3025,
+    "net_outflow_pct": 12.64,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.1472,
+      "semi_liquid_ratio": 0.5284,
+      "illiquid_ratio": 0.3244
+    },
+    "investor_name": "***MASKED_INVESTOR_681***",
+    "investor_pan": "XXXXX9333F",
+    "investor_aadhaar": "XXXX-XXXX-2390"
+  },
+  {
+    "scenario_id": "SCENARIO_080",
+    "aum": 32541297885.78,
+    "initial_nav": 117.3822,
+    "net_outflow_pct": 0.55,
+    "risk_o_meter": "LOW",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.5429,
+      "semi_liquid_ratio": 0.1086,
+      "illiquid_ratio": 0.3485
+    },
+    "investor_name": "***MASKED_INVESTOR_368***",
+    "investor_pan": "XXXXX1336F",
+    "investor_aadhaar": "XXXX-XXXX-1310"
+  },
+  {
+    "scenario_id": "SCENARIO_081",
+    "aum": 12506120515.8,
+    "initial_nav": 96.4638,
+    "net_outflow_pct": 1.25,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "B-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4862,
+      "semi_liquid_ratio": 0.1367,
+      "illiquid_ratio": 0.3771
+    },
+    "investor_name": "***MASKED_INVESTOR_348***",
+    "investor_pan": "XXXXX5077F",
+    "investor_aadhaar": "XXXX-XXXX-9726"
+  },
+  {
+    "scenario_id": "SCENARIO_082",
+    "aum": 27696272993.37,
+    "initial_nav": 11.2913,
+    "net_outflow_pct": 18.97,
+    "risk_o_meter": "LOW",
+    "prc_cell": "A-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2223,
+      "semi_liquid_ratio": 0.2856,
+      "illiquid_ratio": 0.4921
+    },
+    "investor_name": "***MASKED_INVESTOR_974***",
+    "investor_pan": "XXXXX5477F",
+    "investor_aadhaar": "XXXX-XXXX-1804"
+  },
+  {
+    "scenario_id": "SCENARIO_083",
+    "aum": 12987014286.23,
+    "initial_nav": 129.4501,
+    "net_outflow_pct": 2.13,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.3019,
+      "semi_liquid_ratio": 0.541,
+      "illiquid_ratio": 0.157
+    },
+    "investor_name": "Amit Singh",
+    "investor_pan": "EYWSP2187B",
+    "investor_aadhaar": "769752613867"
+  },
+  {
+    "scenario_id": "SCENARIO_084",
+    "aum": 13751442894.96,
+    "initial_nav": 133.0954,
+    "net_outflow_pct": 7.11,
+    "risk_o_meter": "LOW",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2982,
+      "semi_liquid_ratio": 0.1202,
+      "illiquid_ratio": 0.5816
+    },
+    "investor_name": "***MASKED_INVESTOR_414***",
+    "investor_pan": "XXXXX4545F",
+    "investor_aadhaar": "XXXX-XXXX-3705"
+  },
+  {
+    "scenario_id": "SCENARIO_085",
+    "aum": 11984701336.65,
+    "initial_nav": 235.2204,
+    "net_outflow_pct": 2.96,
+    "risk_o_meter": "LOW",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6559,
+      "semi_liquid_ratio": 0.2671,
+      "illiquid_ratio": 0.077
+    },
+    "investor_name": "Rahul Mehta",
+    "investor_pan": "VLYZZ0495W",
+    "investor_aadhaar": "525404756594"
+  },
+  {
+    "scenario_id": "SCENARIO_086",
+    "aum": 855617931.72,
+    "initial_nav": 166.3714,
+    "net_outflow_pct": 13.31,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "C-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4659,
+      "semi_liquid_ratio": 0.2303,
+      "illiquid_ratio": 0.3038
+    },
+    "investor_name": "***MASKED_INVESTOR_715***",
+    "investor_pan": "XXXXX2764F",
+    "investor_aadhaar": "XXXX-XXXX-2296"
+  },
+  {
+    "scenario_id": "SCENARIO_087",
+    "aum": 5366231560.78,
+    "initial_nav": 208.2659,
+    "net_outflow_pct": 14.61,
+    "risk_o_meter": "LOW",
+    "prc_cell": "A-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2871,
+      "semi_liquid_ratio": 0.6406,
+      "illiquid_ratio": 0.0723
+    },
+    "investor_name": "***MASKED_INVESTOR_336***",
+    "investor_pan": "XXXXX7355F",
+    "investor_aadhaar": "XXXX-XXXX-4863"
+  },
+  {
+    "scenario_id": "SCENARIO_088",
+    "aum": 4603721278.52,
+    "initial_nav": 14.0617,
+    "net_outflow_pct": 9.36,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2257,
+      "semi_liquid_ratio": 0.1816,
+      "illiquid_ratio": 0.5928
+    },
+    "investor_name": "***MASKED_INVESTOR_182***",
+    "investor_pan": "XXXXX3691F",
+    "investor_aadhaar": "XXXX-XXXX-5129"
+  },
+  {
+    "scenario_id": "SCENARIO_089",
+    "aum": 5001121363.24,
+    "initial_nav": 153.8314,
+    "net_outflow_pct": 8.18,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "B-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.5402,
+      "semi_liquid_ratio": 0.3924,
+      "illiquid_ratio": 0.0674
+    },
+    "investor_name": "***MASKED_INVESTOR_194***",
+    "investor_pan": "XXXXX4265F",
+    "investor_aadhaar": "XXXX-XXXX-9918"
+  },
+  {
+    "scenario_id": "SCENARIO_090",
+    "aum": 1886292132.27,
+    "initial_nav": 75.8132,
+    "net_outflow_pct": 1.7,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4906,
+      "semi_liquid_ratio": 0.3766,
+      "illiquid_ratio": 0.1328
+    },
+    "investor_name": "Sneha Rao",
+    "investor_pan": "VFMNN5782T",
+    "investor_aadhaar": "517120963444"
+  },
+  {
+    "scenario_id": "SCENARIO_091",
+    "aum": 44236721278.39,
+    "initial_nav": 47.0462,
+    "net_outflow_pct": 17.91,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.229,
+      "semi_liquid_ratio": 0.3521,
+      "illiquid_ratio": 0.4189
+    },
+    "investor_name": "***MASKED_INVESTOR_536***",
+    "investor_pan": "XXXXX4004F",
+    "investor_aadhaar": "XXXX-XXXX-8536"
+  },
+  {
+    "scenario_id": "SCENARIO_092",
+    "aum": 10802728160.82,
+    "initial_nav": 101.1877,
+    "net_outflow_pct": 6.96,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "A-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2361,
+      "semi_liquid_ratio": 0.5405,
+      "illiquid_ratio": 0.2234
+    },
+    "investor_name": "Vikram Gupta",
+    "investor_pan": "TDCQY5044C",
+    "investor_aadhaar": "939355586579"
+  },
+  {
+    "scenario_id": "SCENARIO_093",
+    "aum": 9199791155.96,
+    "initial_nav": 170.7955,
+    "net_outflow_pct": 4.17,
+    "risk_o_meter": "LOW",
+    "prc_cell": "B-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.2185,
+      "semi_liquid_ratio": 0.2966,
+      "illiquid_ratio": 0.4849
+    },
+    "investor_name": "***MASKED_INVESTOR_659***",
+    "investor_pan": "XXXXX6685F",
+    "investor_aadhaar": "XXXX-XXXX-4798"
+  },
+  {
+    "scenario_id": "SCENARIO_094",
+    "aum": 3015101598.16,
+    "initial_nav": 242.4756,
+    "net_outflow_pct": 18.37,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "B-I",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4729,
+      "semi_liquid_ratio": 0.1696,
+      "illiquid_ratio": 0.3575
+    },
+    "investor_name": "***MASKED_INVESTOR_985***",
+    "investor_pan": "XXXXX7257F",
+    "investor_aadhaar": "XXXX-XXXX-1225"
+  },
+  {
+    "scenario_id": "SCENARIO_095",
+    "aum": 49802969524.13,
+    "initial_nav": 64.5535,
+    "net_outflow_pct": 1.4,
+    "risk_o_meter": "VERY_HIGH",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6832,
+      "semi_liquid_ratio": 0.114,
+      "illiquid_ratio": 0.2027
+    },
+    "investor_name": "***MASKED_INVESTOR_940***",
+    "investor_pan": "XXXXX3734F",
+    "investor_aadhaar": "XXXX-XXXX-9563"
+  },
+  {
+    "scenario_id": "SCENARIO_096",
+    "aum": 45049133396.98,
+    "initial_nav": 205.4498,
+    "net_outflow_pct": 19.86,
+    "risk_o_meter": "LOW",
+    "prc_cell": "C-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.3828,
+      "semi_liquid_ratio": 0.55,
+      "illiquid_ratio": 0.0671
+    },
+    "investor_name": "***MASKED_INVESTOR_730***",
+    "investor_pan": "XXXXX7764F",
+    "investor_aadhaar": "XXXX-XXXX-8130"
+  },
+  {
+    "scenario_id": "SCENARIO_097",
+    "aum": 35233875068.5,
+    "initial_nav": 11.2033,
+    "net_outflow_pct": 18.12,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "B-II",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.4936,
+      "semi_liquid_ratio": 0.1836,
+      "illiquid_ratio": 0.3229
+    },
+    "investor_name": "***MASKED_INVESTOR_687***",
+    "investor_pan": "XXXXX3261F",
+    "investor_aadhaar": "XXXX-XXXX-2222"
+  },
+  {
+    "scenario_id": "SCENARIO_098",
+    "aum": 26021723920.37,
+    "initial_nav": 171.4305,
+    "net_outflow_pct": 11.59,
+    "risk_o_meter": "HIGH",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.276,
+      "semi_liquid_ratio": 0.5041,
+      "illiquid_ratio": 0.2199
+    },
+    "investor_name": "***MASKED_INVESTOR_510***",
+    "investor_pan": "XXXXX4330F",
+    "investor_aadhaar": "XXXX-XXXX-9949"
+  },
+  {
+    "scenario_id": "SCENARIO_099",
+    "aum": 12719609589.61,
+    "initial_nav": 68.468,
+    "net_outflow_pct": 13.4,
+    "risk_o_meter": "MODERATE",
+    "prc_cell": "C-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.6781,
+      "semi_liquid_ratio": 0.2061,
+      "illiquid_ratio": 0.1158
+    },
+    "investor_name": "Suresh Singh",
+    "investor_pan": "TBPQK4560O",
+    "investor_aadhaar": "300466583678"
+  },
+  {
+    "scenario_id": "SCENARIO_100",
+    "aum": 35613712064.55,
+    "initial_nav": 80.9375,
+    "net_outflow_pct": 5.95,
+    "risk_o_meter": "LOW",
+    "prc_cell": "A-III",
+    "portfolio_exposure": {
+      "liquid_ratio": 0.5426,
+      "semi_liquid_ratio": 0.2589,
+      "illiquid_ratio": 0.1985
+    },
+    "investor_name": "***MASKED_INVESTOR_984***",
+    "investor_pan": "XXXXX4511F",
+    "investor_aadhaar": "XXXX-XXXX-2197"
+  }
+]

@@ -1,0 +1,28 @@
+// Policy: SEBI Mandated Swing Pricing & Trigger Compliance
+// Evaluates if the AMC has correctly triggered swing pricing and applied the mandatory minimum swing factors.
+
+// Rule 1: Mandatory Full Swing during Market Dislocation for High-Risk Schemes
+(
+  config.market_dislocation_active && 
+  (input.risk_o_meter == "HIGH" || input.risk_o_meter == "VERY_HIGH")
+) ? (
+  input.swing_pricing_active == true &&
+  (
+    input.prc_cell == "A-III" ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.A_III :
+    input.prc_cell == "B-II"  ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.B_II :
+    input.prc_cell == "B-III" ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.B_III :
+    input.prc_cell == "C-I"   ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.C_I :
+    input.prc_cell == "C-II"  ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.C_II :
+    input.prc_cell == "C-III" ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.C_III :
+    input.applied_swing_factor_pct >= 1.00 // Default minimum for other high-risk debt schemes
+  )
+) : 
+
+// Rule 2: Partial Swing Trigger during Normal Market Conditions (Dislocation Inactive)
+(
+  !config.market_dislocation_active && 
+  input.net_outflow_pct >= config.partial_swing_threshold_pct
+) ? (
+  input.swing_pricing_active == true && 
+  input.applied_swing_factor_pct > 0.0
+) : true

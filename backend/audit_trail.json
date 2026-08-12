@@ -1,0 +1,399 @@
+[
+  {
+    "timestamp": "2026-08-12T05:05:54Z",
+    "request_payload": {
+      "aum": 1000000000.0,
+      "initial_nav": 10.0,
+      "net_outflow_pct": 6.0,
+      "risk_o_meter": "VERY_HIGH",
+      "prc_cell": "C-III",
+      "portfolio_exposure": {
+        "liquid_ratio": 0.4,
+        "semi_liquid_ratio": 0.35,
+        "illiquid_ratio": 0.25
+      },
+      "investor_name": "***MASKED_INVESTOR_AD***",
+      "investor_pan": "XXXXX1234F",
+      "investor_aadhaar": "XXXXXXXX9012"
+    },
+    "optimal_strategy": "WATERFALL",
+    "optimal_strategy_details": {
+      "strategy": "WATERFALL",
+      "liquidated_amounts": {
+        "liquid": 60000000.0,
+        "semi_liquid": 0.0,
+        "illiquid": 0.0,
+        "total": 60000000.0
+      },
+      "transaction_costs": {
+        "liquid": {
+          "inr": 36572.67069006199,
+          "pct": 0.060954451150103325
+        },
+        "semi_liquid": {
+          "inr": 0.0,
+          "pct": 0.0
+        },
+        "illiquid": {
+          "inr": 0.0,
+          "pct": 0.0
+        },
+        "total_inr": 36572.67069006199,
+        "total_pct": 0.06095445115010332
+      },
+      "post_liquidation_exposure": {
+        "liquid_ratio": 0.3617021276595745,
+        "semi_liquid_ratio": 0.3723404255319149,
+        "illiquid_ratio": 0.26595744680851063,
+        "aum": 940000000.0
+      },
+      "post_liquidation_compliant": true
+    },
+    "nav_impact": {
+      "initial_units": 100000000.0,
+      "redemption_units": 6000000.0,
+      "remaining_units": 94000000.0,
+      "swung_nav": 10.0,
+      "actual_cash_paid_out_inr": 60000000.0,
+      "swing_savings_inr": 0.0,
+      "remaining_assets_without_swing_inr": 939963427.3293099,
+      "remaining_assets_with_swing_inr": 939963427.3293099,
+      "remaining_nav_without_swing": 9.999610929035212,
+      "remaining_nav_with_swing": 9.999610929035212,
+      "nav_drag_without_swing_pct": 0.003890709647880186,
+      "nav_drag_with_swing_pct": 0.003890709647880186,
+      "protection_bps": 0.0
+    },
+    "compliance_status": {
+      "overall_compliant": true,
+      "policies": {
+        "swing_pricing_triggers": {
+          "compliant": true,
+          "cel_source": "// Policy: SEBI Mandated Swing Pricing & Trigger Compliance\n// Evaluates if the AMC has correctly triggered swing pricing and applied the mandatory minimum swing factors.\n\n// Rule 1: Mandatory Full Swing during Market Dislocation for High-Risk Schemes\n(\n  config.market_dislocation_active && \n  (input.risk_o_meter == \"HIGH\" || input.risk_o_meter == \"VERY_HIGH\")\n) ? (\n  input.swing_pricing_active == true &&\n  (\n    input.prc_cell == \"A-III\" ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.A_III :\n    input.prc_cell == \"B-II\"  ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.B_II :\n    input.prc_cell == \"B-III\" ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.B_III :\n    input.prc_cell == \"C-I\"   ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.C_I :\n    input.prc_cell == \"C-II\"  ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.C_II :\n    input.prc_cell == \"C-III\" ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.C_III :\n    input.applied_swing_factor_pct >= 1.00 // Default minimum for other high-risk debt schemes\n  )\n) : \n\n// Rule 2: Partial Swing Trigger during Normal Market Conditions (Dislocation Inactive)\n(\n  !config.market_dislocation_active && \n  input.net_outflow_pct >= config.partial_swing_threshold_pct\n) ? (\n  input.swing_pricing_active == true && \n  input.applied_swing_factor_pct > 0.0\n) : true\n",
+          "details": {
+            "market_dislocation_active": false,
+            "risk_o_meter": "VERY_HIGH",
+            "swing_pricing_active": false,
+            "applied_swing_factor_pct": 0.0,
+            "prc_cell": "C-III",
+            "net_outflow_pct": 6.0,
+            "rules_evaluated": [
+              {
+                "name": "Mandatory Full Swing during Market Dislocation",
+                "applies": false,
+                "passed": true
+              },
+              {
+                "name": "Partial Swing Trigger during Normal Conditions",
+                "applies": false,
+                "passed": true
+              }
+            ]
+          }
+        },
+        "portfolio_compliance": {
+          "compliant": true,
+          "cel_source": "// Policy: Mutual Fund Portfolio Exposure & Risk-o-meter Compliance\n// Checks if the portfolio configuration aligns with SEBI's risk classification guidelines.\n\n// Rule 1: If illiquid assets exceed 30%, Risk-o-meter must be High or Very High\n(\n  (input.portfolio_exposure.illiquid_ratio * 100.0) > 30.0\n) ? (\n  input.risk_o_meter == \"HIGH\" || input.risk_o_meter == \"VERY_HIGH\"\n) : true\n&&\n// Rule 2: Illiquid exposure must never exceed the compliance limit (e.g., 35.0%)\n(\n  (input.portfolio_exposure.illiquid_ratio * 100.0) <= config.compliance_limits.max_illiquid_exposure_pct\n)\n",
+          "details": {
+            "illiquid_ratio_pct": 26.595744680851062,
+            "risk_o_meter": "VERY_HIGH",
+            "max_illiquid_exposure_pct": 35.0,
+            "rules": [
+              {
+                "name": "High Risk-o-meter for High Illiquidity (>30%)",
+                "passed": true,
+                "illiquid_pct": 26.595744680851062,
+                "risk_o_meter": "VERY_HIGH"
+              },
+              {
+                "name": "Maximum Illiquid Exposure Limit",
+                "passed": true,
+                "illiquid_pct": 26.595744680851062,
+                "limit_pct": 35.0
+              }
+            ]
+          }
+        },
+        "pii_protection": {
+          "compliant": true,
+          "cel_source": "// Policy: PII Protection for Mutual Fund Investors\n// Checks if incoming transaction payloads are masked for Aadhaar, PAN, and Name.\n// Returns true if compliant (i.e. PII is masked or absent) and false if unmasked PII is leaked.\n\nhas(input.investor_aadhaar) && input.investor_aadhaar != \"\" ? (\n  !input.investor_aadhaar.matches('^[0-9]{12}$') &&\n  (input.investor_aadhaar.matches('^XXXX-XXXX-[0-9]{4}$') || input.investor_aadhaar.matches('^XXXXXXXX[0-9]{4}$'))\n) : true \n&&\nhas(input.investor_pan) && input.investor_pan != \"\" ? (\n  !input.investor_pan.matches('^[A-Z]{5}[0-9]{4}[A-Z]{1}$') &&\n  input.investor_pan.matches('^XXXXX[0-9]{4}[A-Z]$')\n) : true\n&&\nhas(input.investor_name) && input.investor_name != \"\" ? (\n  input.investor_name.startsWith('***') || input.investor_name.contains('MASKED')\n) : true\n",
+          "details": {
+            "aadhaar_checked": true,
+            "aadhaar_valid": true,
+            "pan_checked": true,
+            "pan_valid": true,
+            "name_checked": true,
+            "name_valid": true
+          }
+        }
+      }
+    },
+    "explanation": "### Executive Summary: SEBI Compliance & Swing Pricing Analysis\n\n**Overall Status:** COMPLIANT\n\n**1. Compliance Evaluation:**\nThe portfolio currently complies with SEBI risk requirements. \n\n**2. Liquidation Strategy & Costs:**\nThe system analyzed multiple liquidation routes. **WATERFALL** was determined to be the optimal strategy. The total transaction cost incurred under this strategy is INR 36,572.67 (0.0610% of liquidated amount). \n\n**3. Swing Pricing and NAV Impact:**\nSwing pricing was not triggered as redemption flows did not exceed thresholds and market dislocation was inactive.\n\n**4. Board Recommendations:**\n- Maintain high liquid buffers (G-Secs/T-Bills) to buffer against redemption stress.\n- Since illiquid assets currently represent a significant risk, reduce high-yield lower-rated corporate debt holdings if they approach the 35% threshold."
+  },
+  {
+    "timestamp": "2026-08-12T05:01:24.771207Z",
+    "request_payload": {
+      "aum": 1000000000.0,
+      "initial_nav": 10.0,
+      "net_outflow_pct": 6.0,
+      "risk_o_meter": "VERY_HIGH",
+      "prc_cell": "C-III",
+      "portfolio_exposure": {
+        "liquid_ratio": 0.4,
+        "semi_liquid_ratio": 0.35,
+        "illiquid_ratio": 0.25
+      },
+      "investor_name": "***MASKED_INVESTOR_AD***",
+      "investor_pan": "XXXXX1234F",
+      "investor_aadhaar": "XXXXXXXX9012"
+    },
+    "optimal_strategy": "WATERFALL",
+    "optimal_strategy_details": {
+      "strategy": "WATERFALL",
+      "liquidated_amounts": {
+        "liquid": 60000000.0,
+        "semi_liquid": 0.0,
+        "illiquid": 0.0,
+        "total": 60000000.0
+      },
+      "transaction_costs": {
+        "liquid": {
+          "inr": 36572.67069006199,
+          "pct": 0.060954451150103325
+        },
+        "semi_liquid": {
+          "inr": 0.0,
+          "pct": 0.0
+        },
+        "illiquid": {
+          "inr": 0.0,
+          "pct": 0.0
+        },
+        "total_inr": 36572.67069006199,
+        "total_pct": 0.06095445115010332
+      },
+      "post_liquidation_exposure": {
+        "liquid_ratio": 0.3617021276595745,
+        "semi_liquid_ratio": 0.3723404255319149,
+        "illiquid_ratio": 0.26595744680851063,
+        "aum": 940000000.0
+      },
+      "post_liquidation_compliant": true
+    },
+    "nav_impact": {
+      "initial_units": 100000000.0,
+      "redemption_units": 6000000.0,
+      "remaining_units": 94000000.0,
+      "swung_nav": 10.0,
+      "actual_cash_paid_out_inr": 60000000.0,
+      "swing_savings_inr": 0.0,
+      "remaining_assets_without_swing_inr": 939963427.3293099,
+      "remaining_assets_with_swing_inr": 939963427.3293099,
+      "remaining_nav_without_swing": 9.999610929035212,
+      "remaining_nav_with_swing": 9.999610929035212,
+      "nav_drag_without_swing_pct": 0.003890709647880186,
+      "nav_drag_with_swing_pct": 0.003890709647880186,
+      "protection_bps": 0.0
+    },
+    "compliance_status": {
+      "overall_compliant": true,
+      "policies": {
+        "swing_pricing_triggers": {
+          "compliant": true,
+          "cel_source": "// Policy: SEBI Mandated Swing Pricing & Trigger Compliance\n// Evaluates if the AMC has correctly triggered swing pricing and applied the mandatory minimum swing factors.\n\n// Rule 1: Mandatory Full Swing during Market Dislocation for High-Risk Schemes\n(\n  config.market_dislocation_active && \n  (input.risk_o_meter == \"HIGH\" || input.risk_o_meter == \"VERY_HIGH\")\n) ? (\n  input.swing_pricing_active == true &&\n  (\n    input.prc_cell == \"A-III\" ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.A_III :\n    input.prc_cell == \"B-II\"  ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.B_II :\n    input.prc_cell == \"B-III\" ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.B_III :\n    input.prc_cell == \"C-I\"   ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.C_I :\n    input.prc_cell == \"C-II\"  ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.C_II :\n    input.prc_cell == \"C-III\" ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.C_III :\n    input.applied_swing_factor_pct >= 1.00 // Default minimum for other high-risk debt schemes\n  )\n) : \n\n// Rule 2: Partial Swing Trigger during Normal Market Conditions (Dislocation Inactive)\n(\n  !config.market_dislocation_active && \n  input.net_outflow_pct >= config.partial_swing_threshold_pct\n) ? (\n  input.swing_pricing_active == true && \n  input.applied_swing_factor_pct > 0.0\n) : true\n",
+          "details": {
+            "market_dislocation_active": false,
+            "risk_o_meter": "VERY_HIGH",
+            "swing_pricing_active": false,
+            "applied_swing_factor_pct": 0.0,
+            "prc_cell": "C-III",
+            "net_outflow_pct": 6.0,
+            "rules_evaluated": [
+              {
+                "name": "Mandatory Full Swing during Market Dislocation",
+                "applies": false,
+                "passed": true
+              },
+              {
+                "name": "Partial Swing Trigger during Normal Conditions",
+                "applies": false,
+                "passed": true
+              }
+            ]
+          }
+        },
+        "portfolio_compliance": {
+          "compliant": true,
+          "cel_source": "// Policy: Mutual Fund Portfolio Exposure & Risk-o-meter Compliance\n// Checks if the portfolio configuration aligns with SEBI's risk classification guidelines.\n\n// Rule 1: If illiquid assets exceed 30%, Risk-o-meter must be High or Very High\n(\n  (input.portfolio_exposure.illiquid_ratio * 100.0) > 30.0\n) ? (\n  input.risk_o_meter == \"HIGH\" || input.risk_o_meter == \"VERY_HIGH\"\n) : true\n&&\n// Rule 2: Illiquid exposure must never exceed the compliance limit (e.g., 35.0%)\n(\n  (input.portfolio_exposure.illiquid_ratio * 100.0) <= config.compliance_limits.max_illiquid_exposure_pct\n)\n",
+          "details": {
+            "illiquid_ratio_pct": 26.595744680851062,
+            "risk_o_meter": "VERY_HIGH",
+            "max_illiquid_exposure_pct": 35.0,
+            "rules": [
+              {
+                "name": "High Risk-o-meter for High Illiquidity (>30%)",
+                "passed": true,
+                "illiquid_pct": 26.595744680851062,
+                "risk_o_meter": "VERY_HIGH"
+              },
+              {
+                "name": "Maximum Illiquid Exposure Limit",
+                "passed": true,
+                "illiquid_pct": 26.595744680851062,
+                "limit_pct": 35.0
+              }
+            ]
+          }
+        },
+        "pii_protection": {
+          "compliant": true,
+          "cel_source": "// Policy: PII Protection for Mutual Fund Investors\n// Checks if incoming transaction payloads are masked for Aadhaar, PAN, and Name.\n// Returns true if compliant (i.e. PII is masked or absent) and false if unmasked PII is leaked.\n\nhas(input.investor_aadhaar) && input.investor_aadhaar != \"\" ? (\n  !input.investor_aadhaar.matches('^[0-9]{12}$') &&\n  (input.investor_aadhaar.matches('^XXXX-XXXX-[0-9]{4}$') || input.investor_aadhaar.matches('^XXXXXXXX[0-9]{4}$'))\n) : true \n&&\nhas(input.investor_pan) && input.investor_pan != \"\" ? (\n  !input.investor_pan.matches('^[A-Z]{5}[0-9]{4}[A-Z]{1}$') &&\n  input.investor_pan.matches('^XXXXX[0-9]{4}[A-Z]$')\n) : true\n&&\nhas(input.investor_name) && input.investor_name != \"\" ? (\n  input.investor_name.startsWith('***') || input.investor_name.contains('MASKED')\n) : true\n",
+          "details": {
+            "aadhaar_checked": true,
+            "aadhaar_valid": true,
+            "pan_checked": true,
+            "pan_valid": true,
+            "name_checked": true,
+            "name_valid": true
+          }
+        }
+      }
+    },
+    "explanation": "### Executive Summary: SEBI Compliance & Swing Pricing Analysis\n\n**Overall Status:** COMPLIANT\n\n**1. Compliance Evaluation:**\nThe portfolio currently complies with SEBI risk requirements. \n\n**2. Liquidation Strategy & Costs:**\nThe system analyzed multiple liquidation routes. **WATERFALL** was determined to be the optimal strategy. The total transaction cost incurred under this strategy is INR 36,572.67 (0.0610% of liquidated amount). \n\n**3. Swing Pricing and NAV Impact:**\nSwing pricing was not triggered as redemption flows did not exceed thresholds and market dislocation was inactive.\n\n**4. Board Recommendations:**\n- Maintain high liquid buffers (G-Secs/T-Bills) to buffer against redemption stress.\n- Since illiquid assets currently represent a significant risk, reduce high-yield lower-rated corporate debt holdings if they approach the 35% threshold."
+  },
+  {
+    "timestamp": "2026-08-12T04:58:20.917641Z",
+    "request_payload": {
+      "aum": 1000000000.0,
+      "initial_nav": 10.0,
+      "net_outflow_pct": 6.0,
+      "risk_o_meter": "VERY_HIGH",
+      "prc_cell": "C-III",
+      "portfolio_exposure": {
+        "liquid_ratio": 0.4,
+        "semi_liquid_ratio": 0.35,
+        "illiquid_ratio": 0.25
+      },
+      "investor_name": "***MASKED_INVESTOR_AD***",
+      "investor_pan": "XXXXX1234F",
+      "investor_aadhaar": "XXXXXXXX9012"
+    },
+    "optimal_strategy": "WATERFALL",
+    "optimal_strategy_details": {
+      "strategy": "WATERFALL",
+      "liquidated_amounts": {
+        "liquid": 60000000.0,
+        "semi_liquid": 0.0,
+        "illiquid": 0.0,
+        "total": 60000000.0
+      },
+      "transaction_costs": {
+        "liquid": {
+          "inr": 36572.67069006199,
+          "pct": 0.060954451150103325
+        },
+        "semi_liquid": {
+          "inr": 0.0,
+          "pct": 0.0
+        },
+        "illiquid": {
+          "inr": 0.0,
+          "pct": 0.0
+        },
+        "total_inr": 36572.67069006199,
+        "total_pct": 0.06095445115010332
+      },
+      "post_liquidation_exposure": {
+        "liquid_ratio": 0.3617021276595745,
+        "semi_liquid_ratio": 0.3723404255319149,
+        "illiquid_ratio": 0.26595744680851063,
+        "aum": 940000000.0
+      },
+      "post_liquidation_compliant": true
+    },
+    "nav_impact": {
+      "initial_units": 100000000.0,
+      "redemption_units": 6000000.0,
+      "remaining_units": 94000000.0,
+      "swung_nav": 9.95,
+      "actual_cash_paid_out_inr": 59699999.99999999,
+      "swing_savings_inr": 300000.00000000745,
+      "remaining_assets_without_swing_inr": 939963427.3293099,
+      "remaining_assets_with_swing_inr": 940263427.3293099,
+      "remaining_nav_without_swing": 9.999610929035212,
+      "remaining_nav_with_swing": 10.002802418396914,
+      "nav_drag_without_swing_pct": 0.003890709647880186,
+      "nav_drag_with_swing_pct": -0.02802418396914419,
+      "protection_bps": 3.1914893617024376
+    },
+    "compliance_status": {
+      "overall_compliant": false,
+      "policies": {
+        "swing_pricing_triggers": {
+          "compliant": true,
+          "cel_source": "// Policy: SEBI Mandated Swing Pricing & Trigger Compliance\n// Evaluates if the AMC has correctly triggered swing pricing and applied the mandatory minimum swing factors.\n\n// Rule 1: Mandatory Full Swing during Market Dislocation for High-Risk Schemes\n(\n  config.market_dislocation_active && \n  (input.risk_o_meter == \"HIGH\" || input.risk_o_meter == \"VERY_HIGH\")\n) ? (\n  input.swing_pricing_active == true &&\n  (\n    input.prc_cell == \"A-III\" ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.A_III :\n    input.prc_cell == \"B-II\"  ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.B_II :\n    input.prc_cell == \"B-III\" ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.B_III :\n    input.prc_cell == \"C-I\"   ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.C_I :\n    input.prc_cell == \"C-II\"  ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.C_II :\n    input.prc_cell == \"C-III\" ? input.applied_swing_factor_pct >= config.prc_matrix_swing_factors.C_III :\n    input.applied_swing_factor_pct >= 1.00 // Default minimum for other high-risk debt schemes\n  )\n) : \n\n// Rule 2: Partial Swing Trigger during Normal Market Conditions (Dislocation Inactive)\n(\n  !config.market_dislocation_active && \n  input.net_outflow_pct >= config.partial_swing_threshold_pct\n) ? (\n  input.swing_pricing_active == true && \n  input.applied_swing_factor_pct > 0.0\n) : true\n",
+          "details": {
+            "market_dislocation_active": false,
+            "risk_o_meter": "VERY_HIGH",
+            "swing_pricing_active": true,
+            "applied_swing_factor_pct": 0.5,
+            "prc_cell": "C-III",
+            "net_outflow_pct": 6.0,
+            "rules_evaluated": [
+              {
+                "name": "Mandatory Full Swing during Market Dislocation",
+                "applies": false,
+                "passed": true
+              },
+              {
+                "name": "Partial Swing Trigger during Normal Conditions",
+                "applies": true,
+                "passed": true,
+                "threshold_pct": 5.0,
+                "net_outflow_pct": 6.0,
+                "swing_pricing_active": true,
+                "applied_swing_factor_pct": 0.5
+              }
+            ]
+          }
+        },
+        "portfolio_compliance": {
+          "compliant": true,
+          "cel_source": "// Policy: Mutual Fund Portfolio Exposure & Risk-o-meter Compliance\n// Checks if the portfolio configuration aligns with SEBI's risk classification guidelines.\n\n// Rule 1: If illiquid assets exceed 30%, Risk-o-meter must be High or Very High\n(\n  (input.portfolio_exposure.illiquid_ratio * 100.0) > 30.0\n) ? (\n  input.risk_o_meter == \"HIGH\" || input.risk_o_meter == \"VERY_HIGH\"\n) : true\n&&\n// Rule 2: Illiquid exposure must never exceed the compliance limit (e.g., 35.0%)\n(\n  (input.portfolio_exposure.illiquid_ratio * 100.0) <= config.compliance_limits.max_illiquid_exposure_pct\n)\n",
+          "details": {
+            "illiquid_ratio_pct": 26.595744680851062,
+            "risk_o_meter": "VERY_HIGH",
+            "max_illiquid_exposure_pct": 35.0,
+            "rules": [
+              {
+                "name": "High Risk-o-meter for High Illiquidity (>30%)",
+                "passed": true,
+                "illiquid_pct": 26.595744680851062,
+                "risk_o_meter": "VERY_HIGH"
+              },
+              {
+                "name": "Maximum Illiquid Exposure Limit",
+                "passed": true,
+                "illiquid_pct": 26.595744680851062,
+                "limit_pct": 35.0
+              }
+            ]
+          }
+        },
+        "pii_protection": {
+          "compliant": false,
+          "cel_source": "// Policy: PII Protection for Mutual Fund Investors\n// Checks if incoming transaction payloads are masked for Aadhaar, PAN, and Name.\n// Returns true if compliant (i.e. PII is masked or absent) and false if unmasked PII is leaked.\n\nhas(input.investor_aadhaar) && input.investor_aadhaar != \"\" ? (\n  !input.investor_aadhaar.matches('^[0-9]{12}$') &&\n  (input.investor_aadhaar.matches('^XXXX-XXXX-[0-9]{4}$') || input.investor_aadhaar.matches('^XXXXXXXX[0-9]{4}$'))\n) : true \n&&\nhas(input.investor_pan) && input.investor_pan != \"\" ? (\n  !input.investor_pan.matches('^[A-Z]{5}[0-9]{4}[A-Z]{1}$') &&\n  input.investor_pan.matches('^XXXXX[0-9]{4}[A-Z]$')\n) : true\n&&\nhas(input.investor_name) && input.investor_name != \"\" ? (\n  input.investor_name.startsWith('***') || input.investor_name.contains('MASKED')\n) : true\n",
+          "details": {
+            "aadhaar_checked": true,
+            "aadhaar_valid": true,
+            "pan_checked": true,
+            "pan_valid": false,
+            "name_checked": true,
+            "name_valid": true
+          }
+        }
+      }
+    },
+    "explanation": "### Executive Summary: SEBI Compliance & Swing Pricing Analysis\n\n**Overall Status:** NON-COMPLIANT\n\n**1. Compliance Evaluation:**\nThe portfolio violates compliance limits. \n\n**2. Liquidation Strategy & Costs:**\nThe system analyzed multiple liquidation routes. **WATERFALL** was determined to be the optimal strategy. The total transaction cost incurred under this strategy is INR 36,572.67 (0.0610% of liquidated amount). \n\n**3. Swing Pricing and NAV Impact:**\nSwing pricing was successfully triggered at a rate of **0.50%**. This adjustment provided **3.19 basis points** of NAV protection for the remaining unit holders. By charging the redeeming investors the swung NAV (INR 9.9500), the fund generated an overlay savings of INR 300,000.00.\n\n**4. Board Recommendations:**\n- Maintain high liquid buffers (G-Secs/T-Bills) to buffer against redemption stress.\n- Since illiquid assets currently represent a significant risk, reduce high-yield lower-rated corporate debt holdings if they approach the 35% threshold."
+  }
+]

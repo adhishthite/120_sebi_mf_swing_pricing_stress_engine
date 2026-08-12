@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SEBI Swing Pricing CEL Rules Specification",
+  "description": "Defines deterministic Common Expression Language (CEL) policy configurations for SEBI Swing Pricing and DPDP compliance.",
+  "rules": [
+    {
+      "id": "SEBI_EXEMPT_SCHEME_CHECK",
+      "name": "Scheme Exemption Policy",
+      "description": "Checks if a mutual fund scheme is exempt from swing pricing (Overnight, Gilt, Gilt with 10-year maturity, and Liquid as per stress engine specs).",
+      "cel_expression": "scheme.category in ['liquid', 'overnight', 'gilt', 'gilt-10yr']",
+      "inputs": {
+        "scheme.category": "string (e.g., 'liquid', 'overnight', 'gilt', 'gilt-10yr', 'corporate_debt')"
+      },
+      "expected_evaluation": "Returns true if the scheme is exempt, false otherwise."
+    },
+    {
+      "id": "SEBI_RETAIL_EXEMPTION_CHECK",
+      "name": "Retail Investor Exemption Policy",
+      "description": "Checks if the redemption transaction is exempt from swing pricing under the retail threshold (up to INR 2 Lakhs / 200,000).",
+      "cel_expression": "transaction.type == 'redemption' && transaction.amount_inr <= 200000.0",
+      "inputs": {
+        "transaction.type": "string ('redemption' or 'subscription')",
+        "transaction.amount_inr": "double (transaction value in INR)"
+      },
+      "expected_evaluation": "Returns true if the transaction is a retail redemption <= 200,000 INR and thus exempt."
+    },
+    {
+      "id": "SEBI_MANDATORY_DISLOCATION_ELIGIBILITY",
+      "name": "Market Dislocation Mandatory Swing Eligibility",
+      "description": "Determines if the scheme is subject to mandatory swing pricing during a declared market dislocation based on high-risk Potential Risk Class (PRC) cells.",
+      "cel_expression": "market.dislocation_active && scheme.prc_class in ['A-III', 'B-II', 'B-III', 'C-I', 'C-II', 'C-III']",
+      "inputs": {
+        "market.dislocation_active": "boolean",
+        "scheme.prc_class": "string (PRC Matrix cells, e.g., 'A-III', 'B-II', etc.)"
+      },
+      "expected_evaluation": "Returns true if market dislocation is active and the scheme falls under a high-risk PRC class."
+    },
+    {
+      "id": "DPDP_AADHAAR_DETECTION",
+      "name": "DPDP Aadhaar Leak Detection",
+      "description": "Detects unmasked 12-digit Aadhaar numbers in input fields for DPDP Act 2023 compliance auditing.",
+      "cel_expression": "has(investor.aadhaar) && investor.aadhaar.matches('^[0-9]{12}$')",
+      "inputs": {
+        "investor.aadhaar": "string (Aadhaar card number)"
+      },
+      "expected_evaluation": "Returns true if an unmasked 12-digit Aadhaar is detected."
+    },
+    {
+      "id": "DPDP_PAN_DETECTION",
+      "name": "DPDP PAN Leak Detection",
+      "description": "Detects unmasked 10-character PAN strings in input fields for DPDP Act 2023 compliance auditing.",
+      "cel_expression": "has(investor.pan) && investor.pan.matches('^[A-Z]{5}[0-9]{4}[A-Z]{1}$')",
+      "inputs": {
+        "investor.pan": "string (PAN number)"
+      },
+      "expected_evaluation": "Returns true if an unmasked 10-character PAN is detected."
+    }
+  ]
+}

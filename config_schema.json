@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SwingPricingStressEngineConfig",
+  "type": "object",
+  "properties": {
+    "system_mode": {
+      "type": "string",
+      "enum": ["MOCK", "LIVE_GCP"],
+      "default": "MOCK",
+      "description": "System execution mode. LIVE_GCP uses Vertex AI APIs."
+    },
+    "market_dislocation_active": {
+      "type": "boolean",
+      "default": false,
+      "description": "Flag indicating if SEBI has declared a state of market dislocation."
+    },
+    "partial_swing_threshold_pct": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 100.0,
+      "default": 5.0,
+      "description": "Net outflow threshold (as % of AUM) above which partial swing pricing is triggered in normal times."
+    },
+    "portfolio_defaults": {
+      "type": "object",
+      "properties": {
+        "liquid_ratio": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "default": 0.40,
+          "description": "Proportion of portfolio in liquid assets (e.g., G-Secs, AAA bonds, T-Bills)."
+        },
+        "semi_liquid_ratio": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "default": 0.35,
+          "description": "Proportion of portfolio in semi-liquid assets (e.g., Commercial Papers)."
+        },
+        "illiquid_ratio": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "default": 0.25,
+          "description": "Proportion of portfolio in illiquid assets (e.g., corporate debt rated AA or below)."
+        }
+      },
+      "required": ["liquid_ratio", "semi_liquid_ratio", "illiquid_ratio"],
+      "additionalProperties": false
+    },
+    "prc_matrix_swing_factors": {
+      "type": "object",
+      "properties": {
+        "A_I": { "type": "number", "default": 0.0 },
+        "A_II": { "type": "number", "default": 0.0 },
+        "A_III": { "type": "number", "default": 1.00, "description": "Mandatory swing factor (%) during market dislocation for PRC Cell A-III" },
+        "B_I": { "type": "number", "default": 0.0 },
+        "B_II": { "type": "number", "default": 1.25, "description": "Mandatory swing factor (%) during market dislocation for PRC Cell B-II" },
+        "B_III": { "type": "number", "default": 1.50, "description": "Mandatory swing factor (%) during market dislocation for PRC Cell B-III" },
+        "C_I": { "type": "number", "default": 1.50, "description": "Mandatory swing factor (%) during market dislocation for PRC Cell C-I" },
+        "C_II": { "type": "number", "default": 1.75, "description": "Mandatory swing factor (%) during market dislocation for PRC Cell C-II" },
+        "C_III": { "type": "number", "default": 2.00, "description": "Mandatory swing factor (%) during market dislocation for PRC Cell C-III" }
+      },
+      "required": ["A_I", "A_II", "A_III", "B_I", "B_II", "B_III", "C_I", "C_II", "C_III"],
+      "additionalProperties": false
+    },
+    "transaction_cost_parameters": {
+      "type": "object",
+      "properties": {
+        "liquid_asset": {
+          "type": "object",
+          "properties": {
+            "base_spread_pct": { "type": "number", "default": 0.05 },
+            "price_impact_coefficient": { "type": "number", "default": 0.1 },
+            "market_depth_limit_inr": { "type": "number", "default": 5000000000.0 }
+          },
+          "required": ["base_spread_pct", "price_impact_coefficient", "market_depth_limit_inr"]
+        },
+        "semi_liquid_asset": {
+          "type": "object",
+          "properties": {
+            "base_spread_pct": { "type": "number", "default": 0.25 },
+            "price_impact_coefficient": { "type": "number", "default": 0.4 },
+            "market_depth_limit_inr": { "type": "number", "default": 2000000000.0 }
+          },
+          "required": ["base_spread_pct", "price_impact_coefficient", "market_depth_limit_inr"]
+        },
+        "illiquid_asset": {
+          "type": "object",
+          "properties": {
+            "base_spread_pct": { "type": "number", "default": 1.00 },
+            "price_impact_coefficient": { "type": "number", "default": 1.2 },
+            "market_depth_limit_inr": { "type": "number", "default": 500000000.0 }
+          },
+          "required": ["base_spread_pct", "price_impact_coefficient", "market_depth_limit_inr"]
+        }
+      },
+      "required": ["liquid_asset", "semi_liquid_asset", "illiquid_asset"],
+      "additionalProperties": false
+    },
+    "pii_masking_enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Enforce masking of investor PII (PAN, Aadhaar, Names) before LLM interactions."
+    },
+    "compliance_limits": {
+      "type": "object",
+      "properties": {
+        "max_illiquid_exposure_pct": { "type": "number", "default": 35.0 },
+        "pan_regex": { "type": "string", "default": "^[A-Z]{5}[0-9]{4}[A-Z]{1}$" },
+        "aadhaar_regex": { "type": "string", "default": "^[0-9]{12}$" }
+      },
+      "required": ["max_illiquid_exposure_pct", "pan_regex", "aadhaar_regex"],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "system_mode",
+    "market_dislocation_active",
+    "partial_swing_threshold_pct",
+    "portfolio_defaults",
+    "prc_matrix_swing_factors",
+    "transaction_cost_parameters",
+    "pii_masking_enabled",
+    "compliance_limits"
+  ],
+  "additionalProperties": false
+}

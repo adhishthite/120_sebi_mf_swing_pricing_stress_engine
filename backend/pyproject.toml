@@ -1,0 +1,36 @@
+[project]
+name = "sebi-mf-swing-pricing-stress-engine"
+version = "0.1.0"
+description = "SEBI Mutual Fund Swing Pricing and Liquidation Stress Simulation Engine"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn>=0.30.0",
+    "pydantic>=2.8.0",
+    "google-genai>=0.1.0",
+    "httpx>=0.27.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.5.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+ignore = [
+    "B008",   # Do not perform function call Body in argument defaults (standard in FastAPI)
+    "BLE001", # Do not catch blind exception Exception
+]

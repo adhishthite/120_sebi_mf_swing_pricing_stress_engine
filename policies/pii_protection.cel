@@ -1,0 +1,17 @@
+// Policy: PII Protection for Mutual Fund Investors
+// Checks if incoming transaction payloads are masked for Aadhaar, PAN, and Name.
+// Returns true if compliant (i.e. PII is masked or absent) and false if unmasked PII is leaked.
+
+has(input.investor_aadhaar) && input.investor_aadhaar != "" ? (
+  !input.investor_aadhaar.matches('^[0-9]{12}$') &&
+  (input.investor_aadhaar.matches('^XXXX-XXXX-[0-9]{4}$') || input.investor_aadhaar.matches('^XXXXXXXX[0-9]{4}$'))
+) : true 
+&&
+has(input.investor_pan) && input.investor_pan != "" ? (
+  !input.investor_pan.matches('^[A-Z]{5}[0-9]{4}[A-Z]{1}$') &&
+  input.investor_pan.matches('^XXXXX[0-9]{4}[A-Z]$')
+) : true
+&&
+has(input.investor_name) && input.investor_name != "" ? (
+  input.investor_name.startsWith('***') || input.investor_name.contains('MASKED')
+) : true

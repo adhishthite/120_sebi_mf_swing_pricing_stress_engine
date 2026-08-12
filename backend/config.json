@@ -1,0 +1,44 @@
+{
+  "system_mode": "MOCK",
+  "market_dislocation_active": false,
+  "partial_swing_threshold_pct": 8.5,
+  "portfolio_defaults": {
+    "liquid_ratio": 0.4,
+    "semi_liquid_ratio": 0.35,
+    "illiquid_ratio": 0.25
+  },
+  "prc_matrix_swing_factors": {
+    "A_I": 0.0,
+    "A_II": 0.0,
+    "A_III": 1.0,
+    "B_I": 0.0,
+    "B_II": 1.25,
+    "B_III": 1.5,
+    "C_I": 1.5,
+    "C_II": 1.75,
+    "C_III": 2.0
+  },
+  "transaction_cost_parameters": {
+    "liquid_asset": {
+      "base_spread_pct": 0.05,
+      "price_impact_coefficient": 0.1,
+      "market_depth_limit_inr": 5000000000.0
+    },
+    "semi_liquid_asset": {
+      "base_spread_pct": 0.25,
+      "price_impact_coefficient": 0.4,
+      "market_depth_limit_inr": 2000000000.0
+    },
+    "illiquid_asset": {
+      "base_spread_pct": 1.0,
+      "price_impact_coefficient": 1.2,
+      "market_depth_limit_inr": 500000000.0
+    }
+  },
+  "pii_masking_enabled": true,
+  "compliance_limits": {
+    "max_illiquid_exposure_pct": 35.0,
+    "pan_regex": "^[A-Z]{5}[0-9]{4}[A-Z]{1}$",
+    "aadhaar_regex": "^[0-9]{12}$"
+  }
+}

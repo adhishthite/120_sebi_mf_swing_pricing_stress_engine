@@ -1,0 +1,14 @@
+// Policy: Mutual Fund Portfolio Exposure & Risk-o-meter Compliance
+// Checks if the portfolio configuration aligns with SEBI's risk classification guidelines.
+
+// Rule 1: If illiquid assets exceed 30%, Risk-o-meter must be High or Very High
+(
+  (input.portfolio_exposure.illiquid_ratio * 100.0) > 30.0
+) ? (
+  input.risk_o_meter == "HIGH" || input.risk_o_meter == "VERY_HIGH"
+) : true
+&&
+// Rule 2: Illiquid exposure must never exceed the compliance limit (e.g., 35.0%)
+(
+  (input.portfolio_exposure.illiquid_ratio * 100.0) <= config.compliance_limits.max_illiquid_exposure_pct
+)

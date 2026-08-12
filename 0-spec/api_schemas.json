@@ -1,0 +1,480 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "SEBI Mutual Fund Swing Pricing Stress Engine API Schema",
+    "description": "API Specifications for the SEBI Mutual Fund Swing Pricing and Outflow Stress Test Engine (Project ID 120). Provides endpoints for configuration, transaction execution, ledger audits, and real-time streaming.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/api",
+      "description": "Local API Gateway Server"
+    }
+  ],
+  "paths": {
+    "/config": {
+      "get": {
+        "summary": "Retrieve Current Engine Configuration",
+        "description": "Fetch the active system parameters, scheme characteristics, and market conditions currently configured in the engine.",
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved configuration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EngineConfig"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Update Engine Configuration",
+        "description": "Set scheme parameters, potential risk class parameters, default portfolios, and active market conditions (such as market dislocation status).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EngineConfig"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Configuration successfully updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "SUCCESS"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Engine configuration updated successfully."
+                    },
+                    "config": {
+                      "$ref": "#/components/schemas/EngineConfig"
+                    }
+                  },
+                  "required": ["status", "message", "config"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid configuration payload"
+          }
+        }
+      }
+    },
+    "/execute": {
+      "post": {
+        "summary": "Execute Simulated Transaction",
+        "description": "Submits a user transaction (redemption or subscription) to the stress engine. Performs DPDP masking, evaluates statutory rules via CEL, simulates asset liquidation waterfall, computes adjusted NAV, and triggers Gemini narrative reporting.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransactionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transaction simulated and validated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid inputs or missing required fields"
+          },
+          "500": {
+            "description": "Internal Server Error / LLM Explainer Failure"
+          }
+        }
+      }
+    },
+    "/ledger": {
+      "get": {
+        "summary": "Retrieve Transaction Ledger History",
+        "description": "Fetch audit records of all simulated transactions executed through the engine.",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of records to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 50
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Number of records to skip for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved ledger records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 12
+                    },
+                    "transactions": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/TransactionResponse"
+                      }
+                    }
+                  },
+                  "required": ["count", "transactions"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stream": {
+      "get": {
+        "summary": "Real-time SSE Audit Stream",
+        "description": "Server-Sent Events (SSE) endpoint providing real-time updates as transactions are processed and audit logs are updated in the engine.",
+        "responses": {
+          "200": {
+            "description": "Establishes SSE channel for real-time compliance events",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "text/event-stream"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              }
+            },
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "string",
+                  "description": "Data payloads prefixed by 'data: ' and ending with double newlines. Payloads match 'TransactionResponse' shape or 'ConfigUpdateEvent' shape."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EngineConfig": {
+        "type": "object",
+        "required": [
+          "system_mode",
+          "aum_inr",
+          "scheme_category",
+          "prc_class",
+          "discretionary_threshold_pct",
+          "market_dislocation_active",
+          "unswung_nav_default"
+        ],
+        "properties": {
+          "system_mode": {
+            "type": "string",
+            "enum": ["MOCK", "LIVE_GCP"],
+            "default": "MOCK",
+            "description": "Specifies execution engine mode. LIVE_GCP utilizes Vertex AI API models."
+          },
+          "aum_inr": {
+            "type": "number",
+            "format": "double",
+            "description": "Assets Under Management (AUM) in INR of the debt scheme.",
+            "example": 10000000000
+          },
+          "scheme_category": {
+            "type": "string",
+            "enum": ["liquid", "overnight", "gilt", "gilt-10yr", "corporate_debt", "credit_risk"],
+            "description": "The SEBI categorization of the mutual fund scheme.",
+            "example": "credit_risk"
+          },
+          "prc_class": {
+            "type": "string",
+            "enum": ["A-I", "A-II", "A-III", "B-I", "B-II", "B-III", "C-I", "C-II", "C-III"],
+            "description": "Potential Risk Class (PRC) classification cell of the scheme.",
+            "example": "B-III"
+          },
+          "discretionary_threshold_pct": {
+            "type": "number",
+            "format": "float",
+            "description": "Net outflow threshold (as % of AUM) that triggers discretionary swing pricing during normal times.",
+            "example": 5.0
+          },
+          "market_dislocation_active": {
+            "type": "boolean",
+            "description": "Indicates if a market dislocation period has been declared by SEBI.",
+            "example": false
+          },
+          "unswung_nav_default": {
+            "type": "number",
+            "format": "double",
+            "description": "Base Net Asset Value (NAV) of the scheme before swing adjustment is calculated.",
+            "example": 100
+          },
+          "pii_masking_enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enforce masking of Aadhaar and PAN strings on the gateway for DPDP Act 2023 compliance."
+          }
+        }
+      },
+      "TransactionRequest": {
+        "type": "object",
+        "required": [
+          "investor_name",
+          "investor_pan",
+          "investor_aadhaar",
+          "amount_inr",
+          "transaction_type"
+        ],
+        "properties": {
+          "investor_name": {
+            "type": "string",
+            "description": "Full name of the investor submitting the request.",
+            "example": "Adhish Thite"
+          },
+          "investor_pan": {
+            "type": "string",
+            "description": "10-character Permanent Account Number (PAN) of the investor.",
+            "example": "ABCDE1234F"
+          },
+          "investor_aadhaar": {
+            "type": "string",
+            "description": "12-digit Aadhaar number of the investor.",
+            "example": "123456789012"
+          },
+          "amount_inr": {
+            "type": "number",
+            "format": "double",
+            "description": "Simulated transaction amount in INR.",
+            "example": 2500000
+          },
+          "transaction_type": {
+            "type": "string",
+            "enum": ["redemption", "subscription"],
+            "description": "Type of transaction action.",
+            "example": "redemption"
+          }
+        }
+      },
+      "TransactionResponse": {
+        "type": "object",
+        "required": [
+          "transaction_id",
+          "timestamp",
+          "masked_payload",
+          "cel_status",
+          "unswung_nav",
+          "swing_factor_applied_pct",
+          "adjusted_nav",
+          "liquidation_waterfall",
+          "total_liquidation_cost_inr",
+          "narrative_explanation"
+        ],
+        "properties": {
+          "transaction_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2026-08-12T04:51:53Z"
+          },
+          "masked_payload": {
+            "type": "object",
+            "description": "Data payload with sensitive values redacted to satisfy DPDP 2023 compliance.",
+            "properties": {
+              "investor_name": {
+                "type": "string",
+                "example": "***hish Thite"
+              },
+              "investor_pan": {
+                "type": "string",
+                "example": "XXXXX1234F"
+              },
+              "investor_aadhaar": {
+                "type": "string",
+                "example": "XXXXXXXX9012"
+              },
+              "amount_inr": {
+                "type": "number",
+                "example": 2500000
+              },
+              "transaction_type": {
+                "type": "string",
+                "example": "redemption"
+              }
+            },
+            "required": ["investor_name", "investor_pan", "investor_aadhaar", "amount_inr", "transaction_type"]
+          },
+          "cel_status": {
+            "type": "object",
+            "description": "Results of statutory CEL rules assessment.",
+            "required": [
+              "is_exempt_scheme",
+              "is_retail_exempt",
+              "is_mandatory_eligible",
+              "swing_pricing_triggered"
+            ],
+            "properties": {
+              "is_exempt_scheme": {
+                "type": "boolean",
+                "description": "True if scheme category is overnight, liquid, gilt, or gilt-10yr.",
+                "example": false
+              },
+              "is_retail_exempt": {
+                "type": "boolean",
+                "description": "True if redemption amount is under the ₹2 Lakh retail limit.",
+                "example": false
+              },
+              "is_mandatory_eligible": {
+                "type": "boolean",
+                "description": "True if SEBI dislocation is active and scheme is in a high-risk PRC cell (A-III, B-II, B-III, C-I, C-II, C-III).",
+                "example": false
+              },
+              "swing_pricing_triggered": {
+                "type": "boolean",
+                "description": "Indicates if swing pricing rules applied to adjust the transaction's NAV.",
+                "example": true
+              },
+              "traces": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "rule_id": { "type": "string" },
+                    "evaluated_expression": { "type": "string" },
+                    "result": { "type": "boolean" }
+                  }
+                }
+              }
+            }
+          },
+          "unswung_nav": {
+            "type": "number",
+            "format": "double",
+            "description": "Base Net Asset Value (NAV) before applying swing factors.",
+            "example": 100
+          },
+          "swing_factor_applied_pct": {
+            "type": "number",
+            "format": "float",
+            "description": "The exact percentage deduction applied to the NAV.",
+            "example": 1.5
+          },
+          "adjusted_nav": {
+            "type": "number",
+            "format": "double",
+            "description": "The final swung transaction NAV (adjusted NAV = unswung NAV * (1 - swing_factor)).",
+            "example": 98.5
+          },
+          "total_liquidation_cost_inr": {
+            "type": "number",
+            "format": "double",
+            "description": "The total simulated liquidation cost computed based on bid-ask spreads and market impact slippage.",
+            "example": 375000
+          },
+          "liquidation_waterfall": {
+            "type": "array",
+            "description": "Step-by-step sequential allocation drawdown from portfolio assets to fund the transaction.",
+            "items": {
+              "$ref": "#/components/schemas/LiquidationStep"
+            }
+          },
+          "narrative_explanation": {
+            "type": "string",
+            "description": "Natural language text detailing the stress test event generated by Gemini 3.5 Flash.",
+            "example": "The transaction was executed during normal market conditions. A redemption request of ₹25 Lakhs was submitted for a Credit Risk Fund. The redemption exceeded the individual retail exemption limit of ₹2 Lakhs, making it subject to swing pricing. Asset liquidation was performed sequentially: Cash was exhausted (₹5 Lakhs), followed by sovereign debt (₹20 Lakhs). Total transaction cost and slippage amounted to ₹3.75 Lakhs, resulting in a computed swing factor of 1.50%. The Net Asset Value (NAV) was adjusted downward from ₹100.00 to ₹98.50."
+          }
+        }
+      },
+      "LiquidationStep": {
+        "type": "object",
+        "required": [
+          "asset_class",
+          "credit_rating",
+          "amount_liquidated_inr",
+          "spread_cost_inr",
+          "impact_slippage_cost_inr",
+          "remaining_balance_inr"
+        ],
+        "properties": {
+          "asset_class": {
+            "type": "string",
+            "example": "G-Sec (Sovereign)"
+          },
+          "credit_rating": {
+            "type": "string",
+            "example": "Sovereign"
+          },
+          "amount_liquidated_inr": {
+            "type": "number",
+            "format": "double",
+            "example": 2000000
+          },
+          "spread_cost_inr": {
+            "type": "number",
+            "format": "double",
+            "example": 1000
+          },
+          "impact_slippage_cost_inr": {
+            "type": "number",
+            "format": "double",
+            "example": 400
+          },
+          "remaining_balance_inr": {
+            "type": "number",
+            "format": "double",
+            "example": 2980000000
+          }
+        }
+      }
+    }
+  }
+}
