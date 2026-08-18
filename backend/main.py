@@ -1,20 +1,50 @@
+"""
+FastAPI Backend Application Entrypoint for Project 120:
+SEBI Mutual Fund Swing Pricing & Liquidation Stress Simulation Engine.
+"""
+
 import json
+from contextlib import asynccontextmanager
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from fastapi import Body, FastAPI, HTTPException
+from fastapi import Body, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 from pydantic import BaseModel
 
 from config import AppConfig, config_manager
 from services.agents import Orchestrator, PIIRedactor
+from services.database import (
+    get_all_traces,
+    get_session_state,
+    init_db,
+    list_hitl_approvals,
+    load_session_history,
+    update_hitl_approval,
+)
+from services.logger import engine_logger
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Initializes database schema and OpenTelemetry instrumentation on startup."""
+    engine_logger.info("Initializing SQLite database engine and tracing...")
+    await init_db()
+    yield
+    engine_logger.info("Shutting down engine service...")
+
 
 app = FastAPI(
     title="SEBI Mutual Fund Swing Pricing and Stress Simulation Engine",
-    description="Backend API for portfolio liquidation stress testing, compliance checks, and swing pricing.",
-    version="1.0.0",
+    description="Backend API for portfolio liquidation stress testing, compliance checks, swing pricing, and HITL adjudication.",
+    version="2.0.0",
+    lifespan=lifespan,
 )
+
+# OpenTelemetry FastAPI automatic request instrumentation
+FastAPIInstrumentor.instrument_app(app)
 
 # Enable CORS for frontend integration
 app.add_middleware(
@@ -40,14 +70,18 @@ def load_audit_trail() -> list[dict[str, Any]]:
 
 def save_to_audit_trail(entry: dict[str, Any]):
     trail = load_audit_trail()
-    trail.insert(0, entry)  # Prepend newest runs
-    # Keep only the last 100 entries to prevent infinite growth
+    trail.insert(0, entry)
     trail = trail[:100]
     try:
         with open(AUDIT_TRAIL_FILE, "w") as f:
             json.dump(trail, f, indent=2)
     except Exception as e:
-        print(f"Failed to write to audit trail: {e}")
+        engine_logger.warning(f"Failed to write to audit trail file: {e}")
+
+
+# ---------------------------------------------------------------------------
+# Request & Response Models
+# ---------------------------------------------------------------------------
 
 
 class RedactRequest(BaseModel):
@@ -56,9 +90,20 @@ class RedactRequest(BaseModel):
     investor_aadhaar: str = ""
 
 
+class ApprovalDecisionRequest(BaseModel):
+    decision: str = "APPROVED"  # APPROVED or REJECTED
+    reviewed_by: str = "Chief Risk Officer"
+    comments: str = "Approved by Risk & Compliance Committee under Para 7.1 guidelines."
+
+
+# ---------------------------------------------------------------------------
+# API Endpoints
+# ---------------------------------------------------------------------------
+
+
 @app.post("/api/redact")
 def redact_pii(payload: dict[str, Any] = Body(...)):
-    """Masks investor PII (PAN, Aadhaar, and Name) using regex rules defined in policies."""
+    """Masks investor PII (PAN, Aadhaar, and Name) using DPDP 2023 compliant policies."""
     try:
         redacted = PIIRedactor.redact_payload(payload)
         return redacted
@@ -67,33 +112,106 @@ def redact_pii(payload: dict[str, Any] = Body(...)):
 
 
 @app.post("/api/simulate-stress")
-def simulate_stress(payload: dict[str, Any] = Body(...)):
+async def simulate_stress(payload: dict[str, Any] = Body(...)):
     """
-    Simulates a portfolio stress scenario.
-    Optimizes liquidation, evaluates compliance rules, and generates explanations.
+    Simulates a portfolio stress scenario using autonomous multi-agent coordination.
+    Optimizes liquidation, evaluates CEL compliance rules, computes swung NAV, and checks HITL code stops.
     """
     try:
-        # Run orchestrator simulation
-        result = Orchestrator.run_simulation(payload)
+        result = await Orchestrator.run_simulation_async(payload)
 
-        # Add to audit trail
+        # Append to legacy JSON audit trail for backwards-compatibility
         audit_entry = {
             "timestamp": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "session_id": result.get("session_id"),
+            "session_status": result.get("session_status"),
             "request_payload": result.get("redacted_input_payload", {}),
             "optimal_strategy": result.get("optimal_strategy"),
             "optimal_strategy_details": result.get("optimal_strategy_details"),
             "nav_impact": result.get("nav_impact"),
             "compliance_status": result.get("compliance_status"),
             "explanation": result.get("explanation"),
+            "trace_id": result.get("trace_id"),
         }
         save_to_audit_trail(audit_entry)
 
         return result
     except Exception as e:
-        import traceback
-
-        traceback.print_exc()
+        engine_logger.error(f"Simulation failed: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Simulation failed: {e}")
+
+
+@app.get("/api/sessions/{session_id}")
+async def get_session(session_id: str):
+    """Retrieves session state and message history from SQLite."""
+    session = await get_session_state(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail=f"Session {session_id} not found.")
+    messages = await load_session_history(session_id)
+    return {
+        "session": session,
+        "messages": messages,
+    }
+
+
+@app.post("/api/sessions/{session_id}/approve")
+async def approve_session(
+    session_id: str,
+    req: ApprovalDecisionRequest = Body(default_factory=ApprovalDecisionRequest),
+):
+    """
+    Approves or rejects a paused HELD session under Human-in-the-Loop review.
+    """
+    approvals = await list_hitl_approvals(session_id=session_id)
+    if not approvals:
+        raise HTTPException(status_code=404, detail=f"No pending approval ticket found for session {session_id}.")
+
+    latest_appr = approvals[0]
+    updated = await update_hitl_approval(
+        approval_id=latest_appr["approval_id"],
+        status=req.decision.upper(),
+        approved_by=req.reviewed_by,
+        comments=req.comments,
+    )
+    return {
+        "message": f"Session {session_id} decision recorded as {req.decision.upper()}.",
+        "approval": updated,
+    }
+
+
+@app.get("/api/approvals")
+async def get_approvals(
+    session_id: str | None = Query(None),
+    status: str | None = Query(None),
+):
+    """Lists Human-in-the-Loop approval tickets."""
+    return await list_hitl_approvals(session_id=session_id, status=status)
+
+
+@app.post("/api/approvals/{approval_id}/decision")
+async def record_approval_decision(
+    approval_id: str,
+    req: ApprovalDecisionRequest = Body(...),
+):
+    """Submits a maker-checker approval decision for an approval ticket."""
+    updated = await update_hitl_approval(
+        approval_id=approval_id,
+        status=req.decision.upper(),
+        approved_by=req.reviewed_by,
+        comments=req.comments,
+    )
+    if not updated:
+        raise HTTPException(status_code=404, detail=f"Approval ID {approval_id} not found.")
+    return updated
+
+
+@app.get("/api/traces")
+async def get_traces(
+    session_id: str | None = Query(None),
+    limit: int = Query(50, ge=1, le=200),
+):
+    """Retrieves OpenTelemetry agent execution traces and latency metrics."""
+    return await get_all_traces(session_id=session_id, limit=limit)
 
 
 @app.get("/api/config", response_model=AppConfig)

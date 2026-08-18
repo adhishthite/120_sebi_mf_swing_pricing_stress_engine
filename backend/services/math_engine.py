@@ -205,9 +205,22 @@ def calculate_swing_factor(input_data: dict, config_data: dict) -> tuple[float, 
 
     # Clean PRC key for lookup (support both B-III and B_III)
     prc_key = prc_cell.replace("-", "_") if prc_cell else ""
-    
+
     # High risk cells defined by SEBI: A-III, B-II, B-III, C-I, C-II, C-III
-    high_risk_cells = ["A_III", "A-III", "B_II", "B-II", "B_III", "B-III", "C_I", "C-I", "C_II", "C-II", "C_III", "C-III"]
+    high_risk_cells = [
+        "A_III",
+        "A-III",
+        "B_II",
+        "B-II",
+        "B_III",
+        "B-III",
+        "C_I",
+        "C-I",
+        "C_II",
+        "C-II",
+        "C_III",
+        "C-III",
+    ]
     is_high_risk = (risk_o_meter in ["HIGH", "VERY_HIGH"]) or (prc_cell in high_risk_cells)
 
     if market_dislocation_active and is_high_risk:

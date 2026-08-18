@@ -1,7 +1,7 @@
 {
   "system_mode": "MOCK",
   "market_dislocation_active": false,
-  "partial_swing_threshold_pct": 8.5,
+  "partial_swing_threshold_pct": 7.5,
   "portfolio_defaults": {
     "liquid_ratio": 0.4,
     "semi_liquid_ratio": 0.35,
